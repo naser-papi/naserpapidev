@@ -5,9 +5,7 @@ export default function Home() {
           Welcome to naser papi website!
       </h1>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum exercitationem facere illo labore soluta!
-            Esse facilis ipsam mollitia, nesciunt nulla obcaecati quia quo quos reprehenderit soluta ullam veniam
-            veritatis voluptatem.
+            bare with me, good news are in the way
         </p>
     </main>
   );
