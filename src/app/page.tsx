@@ -5,7 +5,7 @@ export default function Home() {
           Welcome to naser papi website!
       </h1>
         <p>
-            bare with me, good news are in the way
+            Please bear with me, good news is on the way
         </p>
     </main>
   );
