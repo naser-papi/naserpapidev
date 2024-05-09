@@ -1,6 +1,7 @@
 {
   "extends": [
     "next/core-web-vitals",
+    "plugin:valtio/recommended",
     "plugin:storybook/recommended"
   ]
 }
