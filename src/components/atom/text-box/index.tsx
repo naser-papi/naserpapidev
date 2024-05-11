@@ -1,4 +1,5 @@
-import { InputHTMLAttributes, useState, useEffect, ChangeEvent } from "react";
+"use client";
+import { InputHTMLAttributes, useState, ChangeEvent } from "react";
 interface TextBoxProps
     extends Omit<
         InputHTMLAttributes<HTMLInputElement>,

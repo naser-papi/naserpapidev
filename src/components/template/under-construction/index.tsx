@@ -6,7 +6,7 @@ const UnderConstruction = () => {
     return (
         <div
             className={
-                "flex flex-col items-center justify-start relative h-screen"
+                "flex flex-col items-center justify-start h-full max-w-lg"
             }
         >
             <div className={"mb-[64px] w-full flex justify-center"}>
@@ -27,7 +27,7 @@ const UnderConstruction = () => {
                 <TextBox label={"Email"} />
                 <Button text={"Subscribe"} />
             </div>
-            <footer className={"absolute bottom-10"}>
+            <footer className={"mt-[300px]"}>
                 <Socials />
             </footer>
         </div>
