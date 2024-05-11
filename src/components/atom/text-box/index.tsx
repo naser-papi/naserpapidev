@@ -17,14 +17,14 @@ const TextBox = ({ value, onChange, label }: TextBoxProps) => {
     };
 
     return (
-        <div className={"border border-gray-100 radius-lg relative"}>
+        <div className={"border border-gray-100 radius-lg relative w-full"}>
             <label
                 className={`${!hasFocus && !textValue ? "hidden" : ""} absolute -top-4 left-1 bg-[#08101a] px-1`}
             >
                 {label}
             </label>
             <input
-                className={"p-3 text-white bg-transparent"}
+                className={"w-full p-3 text-white bg-transparent"}
                 value={textValue}
                 onChange={textChanged}
                 placeholder={hasFocus || textValue ? "" : label}
