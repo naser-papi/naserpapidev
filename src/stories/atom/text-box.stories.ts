@@ -1,17 +1,19 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@/components";
-const meta: Meta = {
+import { TextBox } from "@/components";
+
+const meta: Meta<typeof TextBox> = {
     parameters: {
         layout: "centered",
     },
-    title: "Atom/Button",
-    component: Button,
+    title: "Atom/TextBox",
+    component: TextBox,
     tags: ["autodoc"],
 };
 export default meta;
 type Story = StoryObj<typeof meta>;
+
 export const Default: Story = {
     args: {
-        text: "Subscribe",
+        label: "Email",
     },
 };
