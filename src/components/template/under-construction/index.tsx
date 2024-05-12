@@ -1,12 +1,11 @@
 import Image from "next/image";
 import naserLogo from "assets/images/naser-logo.png";
 import { TextBox, Button, Socials } from "@/components";
-
 const UnderConstruction = () => {
     return (
         <div
             className={
-                "flex flex-col items-center justify-start h-full max-w-lg"
+                "flex flex-col flex-grow items-center justify-start h-full max-w-lg"
             }
         >
             <div className={"mb-[64px] w-full flex justify-center"}>
@@ -27,7 +26,7 @@ const UnderConstruction = () => {
                 <TextBox label={"Email"} />
                 <Button text={"Subscribe"} />
             </div>
-            <footer className={"mt-[300px]"}>
+            <footer className={"mt-auto"}>
                 <Socials />
             </footer>
         </div>

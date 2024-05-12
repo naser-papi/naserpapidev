@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import mainBk from "assets/images/main-bk.png";
 import "./globals.css";
+import Background from "./(components)/background";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -22,9 +22,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${poppins.className} bg-secondary text-primary bg-[url(/assets/images/main-bk.png)] bg-center bg-no-repeat bg-cover`}
+                className={`${poppins.className} bg-secondary text-primary relative`}
             >
                 {children}
+                <Background />
             </body>
         </html>
     );
