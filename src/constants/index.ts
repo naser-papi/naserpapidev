@@ -1,6 +1,6 @@
-import { ISocail } from "@/types";
+import { ISocial } from "@/types";
 
-export const socials: ISocail[] = [
+export const socials: ISocial[] = [
     {
         title: "Twitter",
         icon: "fa-brands fa-twitter",
