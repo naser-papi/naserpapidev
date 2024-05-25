@@ -7,3 +7,6 @@ why I decided to use mongodb instead of the PostgresDB
 
 how I solved the mongodb challange:
 https://g.co/gemini/share/8f1a73d319c7
+
+middleware, why and how?
+https://nextjs.org/docs/pages/building-your-application/routing/middleware
