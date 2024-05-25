@@ -1,3 +1,5 @@
+import { IAPIInfo } from "@/types";
+
 export const APIPath = {
     subscribe: {
         url: "/api/subscribe",
@@ -6,4 +8,4 @@ export const APIPath = {
             email: "",
         },
     },
-};
+} satisfies { [key: string]: IAPIInfo };

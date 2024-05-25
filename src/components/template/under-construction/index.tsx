@@ -1,6 +1,8 @@
 import Image from "next/image";
 import naserLogo from "assets/images/naser-logo.png";
-import { TextBox, Button, Socials } from "@/components";
+import { Socials } from "@/components";
+import SubscribeAction from "@/components/template/under-construction/subscribe-action";
+
 const UnderConstruction = () => {
     return (
         <div
@@ -22,10 +24,7 @@ const UnderConstruction = () => {
                     subscribe to our mailing list order to get notified.
                 </p>
             </div>
-            <div className={"flex flex-col items-center gap-4 w-full py-8"}>
-                <TextBox label={"Email"} />
-                <Button text={"Subscribe"} />
-            </div>
+            <SubscribeAction />
             <footer className={"mt-auto"}>
                 <Socials />
             </footer>

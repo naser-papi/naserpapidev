@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/database";
 import { Subscribe } from "@/models";
 import { ISubscibeSaveDto } from "@/types";
-import { ServerMessages } from "@/constants";
+import { BadRequestError } from "@/helpers";
 export async function POST(req: NextRequest) {
     try {
         const { email } = (await req.json()) as { email: string };
@@ -19,15 +19,19 @@ export async function POST(req: NextRequest) {
             { status: 201, statusText: "OK" }
         );
     } catch (error: any) {
-        if (error.message === ServerMessages.EMAIL_EXIST) {
-            return NextResponse.json({
-                status: 400,
-                error: error.message,
-            });
+        if (error instanceof BadRequestError) {
+            return NextResponse.json(
+                {
+                    error: error.message,
+                },
+                { status: error.statusCode }
+            );
         }
-        return NextResponse.json({
-            status: 500,
-            error: error,
-        });
+        return NextResponse.json(
+            {
+                error: error,
+            },
+            { status: 500 }
+        );
     }
 }

@@ -3,9 +3,10 @@ import { InputHTMLAttributes, useState, ChangeEvent } from "react";
 interface TextBoxProps
     extends Omit<
         InputHTMLAttributes<HTMLInputElement>,
-        "type" | "placeholder"
+        "type" | "placeholder" | "onChange"
     > {
     label: string;
+    onChange?: (value: string) => void;
 }
 const TextBox = ({ value, onChange, label }: TextBoxProps) => {
     const [hasFocus, setHasFocuse] = useState(false);
@@ -13,7 +14,7 @@ const TextBox = ({ value, onChange, label }: TextBoxProps) => {
     const textChanged = (event: ChangeEvent<HTMLInputElement>) => {
         setTextValue(event.target.value);
         if (onChange) {
-            onChange(event);
+            onChange(event.target.value);
         }
     };
 

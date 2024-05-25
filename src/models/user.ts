@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { ServerMessages } from "@/constants";
+import { BadRequestError } from "@/helpers";
 interface ISubscribe {
     email: string;
     createdAt: Date;
@@ -25,7 +26,7 @@ const schema = new mongoose.Schema(
 schema.pre("save", async function (next) {
     const exist = await Subscribe.findOne({ email: this.email });
     if (exist) {
-        throw new Error(ServerMessages.EMAIL_EXIST);
+        throw new BadRequestError(ServerMessages.EMAIL_EXIST);
     }
     next();
 });

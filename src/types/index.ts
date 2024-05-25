@@ -1,3 +1,8 @@
+import { HTTP_METHOD } from "next/dist/server/web/http";
+
+export interface IServerError {
+    error: string;
+}
 export interface ISocial {
     title: string;
     icon: string;
@@ -12,4 +17,15 @@ export interface IServerMessage {
         code: number;
         message: string;
     };
+}
+
+export interface IAPIInfo {
+    url: string;
+    method: HTTP_METHOD;
+    body?: any;
+    tokenLess?: boolean;
+    params?: {
+        [key: string]: string;
+    };
+    options?: RequestInit;
 }
