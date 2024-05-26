@@ -23,12 +23,5 @@ const schema = new mongoose.Schema(
     },
     { timestamps: true }
 );
-schema.pre("save", async function (next) {
-    const exist = await Subscribe.findOne({ email: this.email });
-    if (exist) {
-        throw new BadRequestError(ServerMessages.EMAIL_EXIST);
-    }
-    next();
-});
 export const Subscribe: mongoose.Model<ISubscribe> =
     mongoose.models.Subscribe || mongoose.model("Subscribe", schema);

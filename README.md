@@ -10,3 +10,5 @@ https://g.co/gemini/share/8f1a73d319c7
 
 middleware, why and how?
 https://nextjs.org/docs/pages/building-your-application/routing/middleware
+
+error handling in server side and MongoDB.
