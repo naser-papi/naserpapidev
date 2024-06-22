@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
         }
         const newSubscribe = await Subscribe.create({ email: normalEmail });
         const doc = await newSubscribe.save();
-        const dto: ISubscibeSaveDto = {
+        const dto = {
             email: doc.email,
         };
         return NextResponse.json(
