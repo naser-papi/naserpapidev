@@ -15,6 +15,11 @@ export const callApi = async (
     try {
         const url = normalizeURLForE2ETest(info.url);
         const normalizUrl = info.params ? replaceParams(url, info.params) : url;
+        console.log(
+            "URL",
+            process.env.API_SERVER,
+            process.env.NEXT_PUBLIC_API_SERVER
+        );
         const fullURL = `${
             process.env.API_SERVER ?? process.env.NEXT_PUBLIC_API_SERVER
         }/${normalizUrl}`;
