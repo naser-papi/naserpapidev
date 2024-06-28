@@ -2,10 +2,12 @@
 import { useState } from "react";
 import { Button, TextBox } from "@/components";
 import { APIPath } from "@/constants/api";
-import { callApi } from "@/services";
+import { useClientApi } from "@/hooks";
 import { isEmail } from "@/helpers";
+import { SubscribeDto } from "@/types/dto";
 
 const SubscribeAction = () => {
+    const { callRestAPI } = useClientApi();
     const [email, setEmail] = useState("");
     const subscribeHandler = async () => {
         if (email && isEmail(email)) {
@@ -13,7 +15,7 @@ const SubscribeAction = () => {
             apiInfo.body = {
                 email,
             };
-            const resp = await callApi(apiInfo);
+            const resp = await callRestAPI<SubscribeDto>(apiInfo);
             if (resp) {
                 alert("Thanks for subscribing with email");
             }
