@@ -9,14 +9,7 @@ export interface ISocial {
     url: string;
 }
 export interface ISubscibeSaveDto {
-    createSubscription: {
-        data: {
-            id: string;
-            attributes: {
-                email: string;
-            };
-        };
-    };
+    email: string;
 }
 
 export interface IServerMessage {

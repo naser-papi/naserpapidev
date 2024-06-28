@@ -11,8 +11,6 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@apollo/client": "^3.10.6",
-    "graphql": "^16.9.0",
     "mongoose": "^8.3.4",
     "next": "14.1.4",
     "react": "^18",

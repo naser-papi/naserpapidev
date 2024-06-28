@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Background from "./(components)/background";
-import MainLoader from "@/app/(components)/main-loader";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -18,17 +17,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
     children,
 }: Readonly<{
-    children: JSX.Element;
+    children: React.ReactNode;
 }>) {
     return (
         <html lang="en">
             <body
                 className={`${poppins.className} bg-secondary text-primary relative`}
             >
-                <MainLoader>
-                    {children}
-                    <Background />
-                </MainLoader>
+                {children}
+                <Background />
             </body>
         </html>
     );
