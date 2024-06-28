@@ -1,16 +1,11 @@
-import { gql } from "@apollo/client";
+import { IAPIInfo } from "@/types";
 
-export const APIQuery = {
-    subscribe: gql`
-        mutation CreateSubscription($email: String!) {
-            createSubscription(data: { email: $email }) {
-                data {
-                    id
-                    attributes {
-                        email
-                    }
-                }
-            }
-        }
-    `,
-};
+export const APIPath = {
+    subscribe: {
+        url: "/api/subscribe",
+        method: "POST",
+        body: {
+            email: "",
+        },
+    },
+} satisfies { [key: string]: IAPIInfo };

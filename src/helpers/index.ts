@@ -52,10 +52,4 @@ export function partialData<T extends { [key in string]: any }>(data: any): T {
     return result as T;
 }
 
-export function normalizeEmail(email: string) {
-    const [localPart, domain] = email.split("@");
-    const cleanedLocalPart = localPart.replace(/\./g, "");
-    return `${cleanedLocalPart}@${domain}`;
-}
-
 export * from "./error-types";
