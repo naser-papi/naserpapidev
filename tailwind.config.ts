@@ -8,6 +8,10 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                ubuntu: ["var(--font-ubuntu)"],
+                ibm: ["var(--font-ibmmono)"],
+            },
             colors: {
                 primary: {
                     900: "#1A1E23",

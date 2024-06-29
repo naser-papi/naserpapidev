@@ -2,7 +2,7 @@ import { socials } from "@/constants";
 
 const SocialIcons = () => {
     return (
-        <div className={"flex flex-col gap-4 items-center"}>
+        <div className={"font-ibm flex flex-col gap-4 items-center"}>
             <ul className={"flex gap-4"}>
                 {socials.map((social) => (
                     <li
