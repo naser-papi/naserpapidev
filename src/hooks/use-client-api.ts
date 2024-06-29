@@ -4,12 +4,16 @@ import { mainCall } from "@/helpers/apiUtil";
 import { appState } from "@/stores";
 import { useRouter } from "next/navigation";
 import { useSnapshot } from "valtio";
+import { useState } from "react";
 
 const useClientApi = () => {
     const { userInfo } = useSnapshot(appState);
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
     const callRestAPI = async <T>(info: IAPIInfo) => {
+        setIsLoading(true);
         const resp = await mainCall<T>(info, userInfo?.token);
+        setIsLoading(false);
         if (resp.status === 403 || resp.status === 401) {
             appState.globalMessage = undefined;
             router.push("/auth/sign-in");
@@ -26,7 +30,7 @@ const useClientApi = () => {
         return resp.data;
     };
 
-    return { callRestAPI };
+    return { callRestAPI, isLoading };
 };
 
 export default useClientApi;

@@ -6,13 +6,14 @@ interface ButtonProps
     text: string;
 }
 
-const Button = ({ text, onClick }: ButtonProps) => {
+const Button = ({ text, onClick, ...rest }: ButtonProps) => {
     return (
         <button
             className={
                 "flex w-full rounded-md px-6 items-center bg-white text-black h-12 font-bold justify-center"
             }
             onClick={onClick}
+            {...rest}
         >
             {text}
         </button>

@@ -7,7 +7,7 @@ import { isEmail } from "@/helpers";
 import { SubscribeDto } from "@/types/dto";
 
 const SubscribeAction = () => {
-    const { callRestAPI } = useClientApi();
+    const { callRestAPI, isLoading } = useClientApi();
     const [email, setEmail] = useState("");
     const subscribeHandler = async () => {
         if (email && isEmail(email)) {
@@ -26,7 +26,11 @@ const SubscribeAction = () => {
     return (
         <div className={"flex flex-col items-center gap-4 w-full py-8"}>
             <TextBox label={"Email"} onChange={setEmail} />
-            <Button text={"Subscribe"} onClick={subscribeHandler} />
+            <Button
+                text={"Subscribe"}
+                onClick={subscribeHandler}
+                disabled={isLoading}
+            />
         </div>
     );
 };
