@@ -1,21 +1,65 @@
 "use client";
 import { ButtonHTMLAttributes } from "react";
+import { cva, VariantProps } from "class-variance-authority";
+import { Spinner } from "@/components";
+
+const buttonVariants = cva(
+    [
+        "flex",
+        "w-full",
+        "rounded-md",
+        "items-center",
+        "bg-white",
+        "text-black",
+        "justify-center",
+    ],
+    {
+        variants: {
+            size: {
+                small: ["h-6", "px-2", "text-sm", "font-medium"],
+                medium: ["h-8", "px-4", "text-base", "font-semibold"],
+                large: ["h-12", "px-6", "text-md", "font-bold"],
+            },
+            loading: {
+                true: ["grid", "grid-cols-[auto_1fr]"],
+                false: [],
+            },
+        },
+        defaultVariants: {
+            size: "medium",
+        },
+    }
+);
 
 interface ButtonProps
-    extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+    extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">,
+        VariantProps<typeof buttonVariants> {
     text: string;
 }
 
-const Button = ({ text, onClick, ...rest }: ButtonProps) => {
+const Button = ({
+    text,
+    loading,
+    size,
+    onClick,
+    disabled,
+    ...rest
+}: ButtonProps) => {
     return (
         <button
-            className={
-                "flex w-full rounded-md px-6 items-center bg-white text-black h-12 font-bold justify-center"
-            }
+            className={buttonVariants({ loading, size })}
             onClick={onClick}
+            disabled={loading || disabled}
             {...rest}
         >
-            {text}
+            {loading ? (
+                <>
+                    <Spinner fillColor={"bg-blue"} size={size} />
+                    <span>{text}</span>
+                </>
+            ) : (
+                text
+            )}
         </button>
     );
 };

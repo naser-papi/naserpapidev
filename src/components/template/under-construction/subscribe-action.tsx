@@ -28,8 +28,9 @@ const SubscribeAction = () => {
             <TextBox label={"Email"} onChange={setEmail} />
             <Button
                 text={"Subscribe"}
+                size={"large"}
                 onClick={subscribeHandler}
-                disabled={isLoading}
+                loading={isLoading}
             />
         </div>
     );
