@@ -45,7 +45,7 @@ const TextBox = ({ value, onChange, disabled, label }: TextBoxProps) => {
     return (
         <div className={textBoxVariants({ disabled })}>
             <label
-                className={`${!hasFocus && !textValue ? "hidden" : ""} absolute -top-4 left-1 bg-[#08101a] px-1`}
+                className={`${!hasFocus && !textValue ? "hidden" : ""} absolute -top-4 left-1 bg-primary-900 px-1 text-primary-100`}
             >
                 {label}
             </label>

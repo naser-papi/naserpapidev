@@ -8,7 +8,7 @@ interface SimpleLogoProps {
 const SimpleLogo = ({ bold, title }: SimpleLogoProps) => {
     return (
         <div className={"flex items-center gap-2"}>
-            <LinkLable text={bold} state={"active"} />
+            <LinkLable text={bold} active={true} />
             <LinkLable text={title} />
         </div>
     );
