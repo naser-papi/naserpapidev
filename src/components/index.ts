@@ -14,3 +14,6 @@ export { default as LabelIcon } from "./atom/label-icon";
 export { default as ContentFrame } from "./atom/content-frame";
 export { default as HeroBox } from "./organism/hero-box";
 export { default as Tag } from "./atom/tag";
+export { default as IconBox } from "./atom/icon-box";
+export { default as TitleIcon } from "./molecule/title-icon";
+export { default as Intro } from "./organism/intro";

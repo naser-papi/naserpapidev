@@ -1,10 +1,11 @@
-import type { Preview } from "@storybook/react";
+import type { Preview, StoryFn, StoryObj } from "@storybook/react";
 import "!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css";
 import {
     INITIAL_VIEWPORTS,
     MINIMAL_VIEWPORTS,
 } from "@storybook/addon-viewport";
 import "../src/app/globals.css";
+import { ubunto, ibmmono } from "../src/app/(utils)/fonts";
 import "../public/assets/font-awsome/css/all.min.css";
 
 const customViewports = {
@@ -26,6 +27,17 @@ const customViewports = {
 
 const preview: Preview = {
     parameters: {
+        layout: "centered",
+        decorators: [
+            (Story: StoryFn) => (
+                <div
+                    className={`${ubunto} ${ibmmono} bg-secondary text-primary-100`}
+                >
+                    {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+                    <Story />
+                </div>
+            ),
+        ],
         viewport: {
             viewports: {
                 ...INITIAL_VIEWPORTS,
