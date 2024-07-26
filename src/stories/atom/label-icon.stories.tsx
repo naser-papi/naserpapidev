@@ -12,7 +12,7 @@ const meta: Meta<typeof LabelIcon> = {
 export default meta;
 export const Default: StoryObj<typeof LabelIcon> = {
     args: {
-        icon: "fa-solid fa-envelope",
+        icon: <i className={"fa-solid fa-envelope"} />,
         label: "naserpapi@hotmail.com",
     },
 };

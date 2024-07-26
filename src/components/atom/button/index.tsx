@@ -12,6 +12,7 @@ const buttonVariants = cva(
         "bg-white",
         "text-black",
         "justify-center",
+        "gap-2",
     ],
     {
         variants: {
@@ -35,6 +36,7 @@ interface ButtonProps
     extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">,
         VariantProps<typeof buttonVariants> {
     text: string;
+    icon?: JSX.Element;
 }
 
 const Button = ({
@@ -43,6 +45,7 @@ const Button = ({
     size,
     onClick,
     disabled,
+    icon,
     ...rest
 }: ButtonProps) => {
     return (
@@ -56,6 +59,11 @@ const Button = ({
                 <>
                     <Spinner fillColor={"bg-blue"} size={size} />
                     <span>{text}</span>
+                </>
+            ) : icon ? (
+                <>
+                    {text}
+                    {icon}
                 </>
             ) : (
                 text
