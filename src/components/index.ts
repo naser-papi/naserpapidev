@@ -17,3 +17,5 @@ export { default as Tag } from "./atom/tag";
 export { default as IconBox } from "./atom/icon-box";
 export { default as TitleIcon } from "./molecule/title-icon";
 export { default as Intro } from "./organism/intro";
+export { default as Indicator } from "./molecule/indicator";
+export { default as TopSkills } from "./organism/top-skills";

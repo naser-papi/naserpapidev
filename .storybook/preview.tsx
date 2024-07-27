@@ -55,7 +55,7 @@ const preview: Preview = {
                 },
                 {
                     name: "dark",
-                    value: "#1A1E23",
+                    value: "#374151",
                 },
             ],
         },
