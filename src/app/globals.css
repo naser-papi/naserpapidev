@@ -2,3 +2,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*line with bullets*/
+.line-with-bullets {
+    position: relative;
+    height: 2px;
+    width: 100%;
+}
+
+.line-with-bullets::before,
+.line-with-bullets::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.line-with-bullets::before {
+    left: 0;
+}
+
+.line-with-bullets::after {
+    right: 0;
+}
+
+/*----------line with bullets*/
