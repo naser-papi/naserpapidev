@@ -19,6 +19,14 @@ const meta: Meta = {
             control: "radio",
             options: ["small", "medium", "large"],
         },
+        intend: {
+            control: "radio",
+            options: ["default", "primary", "secondary"],
+        },
+        shape: {
+            control: "radio",
+            options: ["rect", "oval"],
+        },
     },
 };
 export default meta;

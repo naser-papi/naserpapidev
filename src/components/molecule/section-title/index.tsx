@@ -1,6 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
-const sectionTitleVaraints = cva(["text-center"], {
+const sectionTitleVariants = cva(["text-center"], {
     variants: {
         mode: {
             default: [
@@ -25,18 +26,29 @@ const sectionTitleVaraints = cva(["text-center"], {
             ],
         },
     },
+    defaultVariants: {
+        mode: "default",
+    },
 });
-import { LabelHTMLAttributes } from "react";
+import { BaseHTMLAttributes } from "react";
 
 interface SectionTitleProps
-    extends LabelHTMLAttributes<HTMLLabelElement>,
-        VariantProps<typeof sectionTitleVaraints> {
+    extends BaseHTMLAttributes<HTMLDivElement>,
+        VariantProps<typeof sectionTitleVariants> {
     title: string;
 }
 
-const SectionTitle = ({ title, mode }: SectionTitleProps) => {
+const SectionTitle = ({
+    title,
+    mode,
+    className,
+    ...rest
+}: SectionTitleProps) => {
     return (
-        <div className={sectionTitleVaraints({ mode })}>
+        <div
+            {...rest}
+            className={twMerge(sectionTitleVariants({ mode }), className)}
+        >
             {title}
             <div className={"line-with-bullets"} />
         </div>

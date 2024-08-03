@@ -168,3 +168,12 @@ export function normalizeEmail(email: string) {
     const cleanedLocalPart = localPart.replace(/\./g, "");
     return `${cleanedLocalPart}@${domain}`;
 }
+
+export function formatBlogDateString(dateString: string) {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "short" });
+    const year = date.getFullYear();
+
+    return `${day < 10 ? "0" + day : day}.${month} ${year}`;
+}

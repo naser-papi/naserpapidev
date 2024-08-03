@@ -6,6 +6,7 @@ import aboutMeBkImg from "assets/images/about-me-bk.png";
 const AboutMe = () => {
     return (
         <div className={"relative w-screen"}>
+            <SectionTitle title={"About Me"} />
             <Image
                 src={aboutMeBkImg}
                 alt={"naser papi background image"}

@@ -2,22 +2,96 @@
 import { InputHTMLAttributes, useState, ChangeEvent } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-const textBoxVariants = cva(
-    ["border", "border-gray-100", "radius-lg", "relative", "w-full"],
+const textBoxVariants = cva(["relative", "w-full"], {
+    variants: {
+        intent: {
+            primary: ["border", "border-primary-100", "radius-lg"],
+            secondary: [],
+        },
+        disabled: {
+            true: [],
+            false: [],
+        },
+        hasFocus: {
+            true: [],
+            false: [],
+        },
+        hasText: {
+            true: [],
+            false: [],
+        },
+    },
+    defaultVariants: {
+        intent: "primary",
+        disabled: false,
+        hasFocus: false,
+    },
+});
+const labelVariants = cva(
+    [
+        "absolute",
+        "-top-4",
+        "left-1",
+        "bg-primary-700",
+        "px-1",
+        "text-primary-100",
+        "z-10",
+    ],
     {
         variants: {
+            intent: {
+                primary: [],
+                secondary: [],
+            },
             disabled: {
                 true: [],
                 false: [],
             },
+            hasFocus: {
+                true: [],
+                false: [],
+            },
+            hasText: {
+                true: [],
+                false: [],
+            },
         },
+        defaultVariants: {
+            intent: "primary",
+            disabled: false,
+            hasFocus: false,
+        },
+        compoundVariants: [
+            {
+                hasFocus: false,
+                hasText: false,
+                className: ["hidden"],
+            },
+        ],
     }
 );
-const inputVariants = cva(["w-full", "p-3", "text-white", "bg-transparent"], {
+const inputVariants = cva(["w-full", "p-3", "bg-transparent", "outline-none"], {
     variants: {
+        intent: {
+            primary: ["text-primary-50"],
+            secondary: ["text-primary-200"],
+        },
         disabled: {
             true: [],
             false: [],
+        },
+        hasFocus: {
+            true: [],
+            false: [],
+        },
+        hasText: {
+            true: [],
+            false: [],
+        },
+        defaultVariants: {
+            intent: "primary",
+            disabled: false,
+            hasFocus: false,
         },
     },
 });
@@ -25,14 +99,24 @@ const inputVariants = cva(["w-full", "p-3", "text-white", "bg-transparent"], {
 interface TextBoxProps
     extends Omit<
             InputHTMLAttributes<HTMLInputElement>,
-            "type" | "placeholder" | "onChange" | "disabled"
+            "onChange" | "disabled" | "type"
         >,
         VariantProps<typeof textBoxVariants> {
     label: string;
     onChange?: (value: string) => void;
+    type?: "text" | "email" | "url" | "area";
 }
 
-const TextBox = ({ value, onChange, disabled, label }: TextBoxProps) => {
+const TextBox = ({
+    value,
+    onChange,
+    disabled,
+    label,
+    intent,
+    placeholder,
+    type,
+    ...rest
+}: TextBoxProps) => {
     const [hasFocus, setHasFocuse] = useState(false);
     const [textValue, setTextValue] = useState(value);
     const textChanged = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,18 +127,39 @@ const TextBox = ({ value, onChange, disabled, label }: TextBoxProps) => {
     };
 
     return (
-        <div className={textBoxVariants({ disabled })}>
+        <div
+            className={textBoxVariants({
+                disabled,
+                intent,
+                hasFocus,
+                hasText: !!textValue,
+            })}
+        >
             <label
-                className={`${!hasFocus && !textValue ? "hidden" : ""} absolute -top-4 left-1 bg-primary-900 px-1 text-primary-100`}
+                className={labelVariants({
+                    intent,
+                    hasText: !!textValue,
+                    hasFocus,
+                })}
             >
                 {label}
             </label>
             <input
-                className={inputVariants({ disabled })}
+                {...rest}
+                className={inputVariants({
+                    disabled,
+                    intent,
+                    hasFocus,
+                    hasText: !!textValue,
+                })}
                 value={textValue}
                 onChange={textChanged}
-                placeholder={hasFocus || textValue ? "" : label}
-                type={"text"}
+                placeholder={
+                    hasFocus || textValue || intent === "secondary"
+                        ? placeholder
+                        : label
+                }
+                type={type ?? "text"}
                 onFocus={() => setHasFocuse(true)}
                 onBlur={() => setHasFocuse(false)}
             />

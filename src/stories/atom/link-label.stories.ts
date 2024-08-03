@@ -14,10 +14,6 @@ const meta: Meta<typeof LinkLable> = {
             control: "radio",
             options: ["large", "medium", "small"],
         },
-        state: {
-            control: "radio",
-            options: ["active", "normal"],
-        },
     },
 };
 export default meta;
