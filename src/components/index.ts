@@ -40,3 +40,7 @@ export { default as BlogsBody } from "./organism/blogs-body";
 export { default as BlogsActions } from "./organism/blogs-actions";
 export { default as Blogs } from "./template/blogs";
 export { default as ContactHeader } from "./organism/contact-header";
+export { default as ContactForm } from "./organism/contact-form";
+export { default as ContactFooter } from "./organism/contact-footer";
+export { default as Contact } from "./template/contact";
+export { default as Hero } from "./template/hero";

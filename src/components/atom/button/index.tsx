@@ -2,6 +2,7 @@
 import { ButtonHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { Spinner } from "@/components";
+import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
     ["flex", "w-auto", "items-center", "justify-center", "gap-2"],
@@ -40,10 +41,7 @@ const buttonVariants = cva(
 );
 
 interface ButtonProps
-    extends Omit<
-            ButtonHTMLAttributes<HTMLButtonElement>,
-            "children" | "className"
-        >,
+    extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">,
         VariantProps<typeof buttonVariants> {
     text: string;
     icon?: JSX.Element;
@@ -58,14 +56,18 @@ const Button = ({
     icon,
     intend,
     shape,
+    className,
     ...rest
 }: ButtonProps) => {
     return (
         <button
-            className={buttonVariants({ loading, size, shape, intend })}
+            {...rest}
+            className={twMerge(
+                buttonVariants({ loading, size, shape, intend }),
+                className
+            )}
             onClick={onClick}
             disabled={loading || disabled}
-            {...rest}
         >
             {loading ? (
                 <>

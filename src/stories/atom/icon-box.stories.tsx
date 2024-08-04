@@ -10,8 +10,15 @@ const meta: Meta<typeof IconBox> = {
 };
 export default meta;
 
-export const Default: StoryObj<typeof IconBox> = {
+export const Primary: StoryObj<typeof IconBox> = {
     args: {
+        intend: "primary",
         icon: <i className="fa-brands fa-rocketchat" />,
+    },
+};
+export const Secondary: StoryObj<typeof IconBox> = {
+    args: {
+        intend: "secondary",
+        icon: <i className="fa-brands fa-linkedin-in" />,
     },
 };

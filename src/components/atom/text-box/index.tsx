@@ -1,12 +1,20 @@
 "use client";
 import { InputHTMLAttributes, useState, ChangeEvent } from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const textBoxVariants = cva(["relative", "w-full"], {
     variants: {
         intent: {
             primary: ["border", "border-primary-100", "radius-lg"],
-            secondary: [],
+            secondary: [
+                "border-b-2",
+                "border-secondary-600",
+                "flex",
+                "flex-col",
+                "pb-1",
+                "gap-4",
+            ],
         },
         disabled: {
             true: [],
@@ -27,53 +35,51 @@ const textBoxVariants = cva(["relative", "w-full"], {
         hasFocus: false,
     },
 });
-const labelVariants = cva(
-    [
-        "absolute",
-        "-top-4",
-        "left-1",
-        "bg-primary-700",
-        "px-1",
-        "text-primary-100",
-        "z-10",
-    ],
-    {
-        variants: {
-            intent: {
-                primary: [],
-                secondary: [],
-            },
-            disabled: {
-                true: [],
-                false: [],
-            },
-            hasFocus: {
-                true: [],
-                false: [],
-            },
-            hasText: {
-                true: [],
-                false: [],
-            },
-        },
-        defaultVariants: {
-            intent: "primary",
-            disabled: false,
-            hasFocus: false,
-        },
-        compoundVariants: [
-            {
-                hasFocus: false,
-                hasText: false,
-                className: ["hidden"],
-            },
-        ],
-    }
-);
-const inputVariants = cva(["w-full", "p-3", "bg-transparent", "outline-none"], {
+const labelVariants = cva([], {
     variants: {
         intent: {
-            primary: ["text-primary-50"],
+            primary: [
+                "absolute",
+                "-top-4",
+                "left-1",
+                "px-1",
+                "bg-primary-700",
+                "text-primary-100",
+                "z-10",
+            ],
+            secondary: ["text-secondary-600", "text-lg"],
+        },
+        disabled: {
+            true: [],
+            false: [],
+        },
+        hasFocus: {
+            true: [],
+            false: [],
+        },
+        hasText: {
+            true: [],
+            false: [],
+        },
+    },
+    defaultVariants: {
+        intent: "primary",
+        disabled: false,
+        hasFocus: false,
+    },
+    compoundVariants: [
+        {
+            hasFocus: false,
+            hasText: false,
+            intent: "primary",
+            className: ["hidden"],
+        },
+    ],
+});
+const inputVariants = cva(["w-full", "bg-transparent", "outline-none"], {
+    variants: {
+        intent: {
+            primary: ["text-primary-50", "p-3"],
             secondary: ["text-primary-200"],
         },
         disabled: {
@@ -115,6 +121,8 @@ const TextBox = ({
     intent,
     placeholder,
     type,
+    required,
+    className,
     ...rest
 }: TextBoxProps) => {
     const [hasFocus, setHasFocuse] = useState(false);
@@ -128,12 +136,16 @@ const TextBox = ({
 
     return (
         <div
-            className={textBoxVariants({
-                disabled,
-                intent,
-                hasFocus,
-                hasText: !!textValue,
-            })}
+            {...rest}
+            className={twMerge(
+                textBoxVariants({
+                    disabled,
+                    intent,
+                    hasFocus,
+                    hasText: !!textValue,
+                }),
+                className
+            )}
         >
             <label
                 className={labelVariants({
@@ -143,9 +155,9 @@ const TextBox = ({
                 })}
             >
                 {label}
+                {required && " *"}
             </label>
             <input
-                {...rest}
                 className={inputVariants({
                     disabled,
                     intent,
