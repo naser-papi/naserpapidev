@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ubunto, ibmmono } from "./(utils)/fonts";
-import Background from "./(components)/background";
+import * as process from "process";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
     title: "welcome to naser papi website ",
@@ -20,7 +21,6 @@ export default function RootLayout({
                 className={`${ubunto} ${ibmmono} bg-secondary text-primary-100 relative`}
             >
                 {children}
-                <Background />
             </body>
         </html>
     );

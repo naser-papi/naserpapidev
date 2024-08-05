@@ -36,6 +36,7 @@ jobs:
           DATABASE_URL=${{ secrets.DATABASE_URL }}
           API_SERVER=${{ secrets.API_SERVER }}
           NEXT_PUBLIC_API_SERVER=${{ secrets.NEXT_PUBLIC_API_SERVER }}
+          SHOW_CONSTRUCTION=${{ secrets.SHOW_CONSTRUCTION }}
 
   deploy:
     runs-on: ubuntu-latest

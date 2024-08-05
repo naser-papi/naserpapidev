@@ -1,8 +1,8 @@
 import { socials } from "@/constants";
 
-const SocialIcons = () => {
+const Footer = () => {
     return (
-        <div className={"font-ibm flex flex-col gap-4 items-center"}>
+        <footer className={"mt-auto font-ibm flex flex-col gap-4 items-center"}>
             <ul className={"flex gap-4"}>
                 {socials.map((social) => (
                     <li
@@ -16,8 +16,8 @@ const SocialIcons = () => {
             <small className={"font-normal text-regular "}>
                 © Copyrights Naser Papi | All Rights Reserved
             </small>
-        </div>
+        </footer>
     );
 };
 
-export default SocialIcons;
+export default Footer;

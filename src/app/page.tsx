@@ -1,9 +1,8 @@
-import UnderConstruction from "@/components/template/under-construction";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-    return (
-        <main className="font-ubuntu flex min-h-screen flex-col items-center justify-between p-4 lg:items-start lg:pl-20">
-            <UnderConstruction />
-        </main>
-    );
+    if (process.env.SHOW_CONSTRUCTION === "yes") {
+        redirect("/construction");
+    }
+    return <main className="min-h-screen"></main>;
 }

@@ -25,12 +25,19 @@ const SubscribeAction = () => {
     };
     return (
         <div className={"flex flex-col items-center gap-4 w-full py-8"}>
-            <TextBox label={"Email"} onChange={setEmail} />
+            <TextBox
+                label={"Email"}
+                onChange={setEmail}
+                intent={"primary"}
+                labelBackgroundColor={"#000"}
+            />
             <Button
                 text={"Subscribe"}
                 size={"large"}
                 onClick={subscribeHandler}
                 loading={isLoading}
+                shape={"rect"}
+                className={"w-full"}
             />
         </div>
     );

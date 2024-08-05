@@ -111,6 +111,7 @@ interface TextBoxProps
     label: string;
     onChange?: (value: string) => void;
     type?: "text" | "email" | "url" | "area";
+    labelBackgroundColor?: string;
 }
 
 const TextBox = ({
@@ -123,6 +124,7 @@ const TextBox = ({
     type,
     required,
     className,
+    labelBackgroundColor,
     ...rest
 }: TextBoxProps) => {
     const [hasFocus, setHasFocuse] = useState(false);
@@ -153,6 +155,7 @@ const TextBox = ({
                     hasText: !!textValue,
                     hasFocus,
                 })}
+                style={{ backgroundColor: labelBackgroundColor }}
             >
                 {label}
                 {required && " *"}
