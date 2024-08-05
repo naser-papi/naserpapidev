@@ -1,4 +1,4 @@
-const Summery = () => {
+const Summary = () => {
     return (
         <div
             className={
@@ -31,4 +31,4 @@ const Summery = () => {
     );
 };
 
-export default Summery;
+export default Summary;

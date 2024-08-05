@@ -7,39 +7,24 @@ export { default as SimpleLogo } from "./molecule/simple-logo";
 export { default as SearchBox } from "./atom/search-box";
 export { default as SearchBoxContainer } from "./molecule/search-box-container";
 export { default as Navbar } from "./molecule/navbar";
-export { default as Header } from "./organism/header";
+
 export { default as Avatar } from "./atom/avatar";
 export { default as LabelIcon } from "./atom/label-icon";
 export { default as ContentFrame } from "./atom/content-frame";
-export { default as HeroBox } from "./organism/hero-box";
+
 export { default as Tag } from "./atom/tag";
 export { default as IconBox } from "./atom/icon-box";
 export { default as TitleIcon } from "./molecule/title-icon";
-export { default as Intro } from "./organism/intro";
+
 export { default as Indicator } from "./molecule/indicator";
-export { default as TopSkills } from "./organism/top-skills";
+
 export { default as SectionTitle } from "./molecule/section-title";
-export { default as Summery } from "./organism/summery";
-export { default as AboutMe } from "./template/about-me";
+
 export { default as SkillCard } from "./molecule/skill-card";
 export { default as BigCircleIcon } from "./atom/big-circle-icon";
-export { default as SkillHeader } from "./organism/skill-header";
-export { default as SkillCards } from "./organism/skill-cards";
-export { default as SkillIcons } from "./organism/skill-icons";
-export { default as Skills } from "./template/skills";
+
 export { default as ProjectCard } from "./atom/project-card";
 export { default as CardCarousel } from "./molecule/card-carousel";
-export { default as WorksCarousel } from "./organism/works-carousel";
-export { default as WorksHeader } from "./organism/works-header";
-export { default as Works } from "./template/works";
-export { default as BlogsHeader } from "./organism/blogs-header";
+
 export { default as BlogLineInfo } from "./atom/blog-line-info";
 export { default as LinkButton } from "./atom/link-button";
-export { default as BlogsBody } from "./organism/blogs-body";
-export { default as BlogsActions } from "./organism/blogs-actions";
-export { default as Blogs } from "./template/blogs";
-export { default as ContactHeader } from "./organism/contact-header";
-export { default as ContactForm } from "./organism/contact-form";
-export { default as ContactFooter } from "./organism/contact-footer";
-export { default as Contact } from "./template/contact";
-export { default as Hero } from "./template/hero";
