@@ -1,5 +1,8 @@
-import { ContactForm, ContactHeader } from "@/components";
-import ContactFooter from "@/components/organism/contact-footer";
+import {
+    ContactForm,
+    ContactHeader,
+    ContactFooter,
+} from "@/components/organism/landing";
 
 const Contact = () => {
     return (

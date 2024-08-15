@@ -1,0 +1,16 @@
+export { default as BlogsActions } from "./blogs-actions";
+export { default as BlogsBody } from "./blogs-body";
+export { default as BlogsHeader } from "./blogs-header";
+export { default as ContactFooter } from "./contact-footer";
+export { default as ContactForm } from "./contact-form";
+export { default as ContactHeader } from "./contact-header";
+export { default as Header } from "./header";
+export { default as HeroBox } from "./hero-box";
+export { default as Intro } from "./intro";
+export { default as SkillCards } from "./skill-cards";
+export { default as SkillHeader } from "./skill-header";
+export { default as SkillIcons } from "./skill-icons";
+export { default as Summery } from "./summary";
+export { default as TopSkills } from "./top-skills";
+export { default as WorksCarousel } from "./works-carousel";
+export { default as WorksHeader } from "./works-header";

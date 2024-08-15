@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { SimpleLogo } from "@/components";
+import { SimpleLogo } from "@/components/molecule";
 
 const meta: Meta<typeof SimpleLogo> = {
     parameters: {

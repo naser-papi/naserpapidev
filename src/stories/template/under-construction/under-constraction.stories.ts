@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { UnderConstructionTemplate } from "@/components";
+import UnderConstructionTemplate from "@/components/template/under-construction";
 const meta: Meta<typeof UnderConstructionTemplate> = {
     parameters: {
         layout: "centered",
     },
     component: UnderConstructionTemplate,
-    title: "template/UnderConstraction",
+    title: "template/construction/UnderConstraction",
 };
 
 export default meta;

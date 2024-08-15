@@ -1,6 +1,6 @@
 import Image from "next/image";
 import bbImg from "assets/images/blogs-body.png";
-import { BlogLineInfo, LinkButton, Tag } from "@/components";
+import { BlogLineInfo, LinkButton, Tag } from "@/components/atom";
 
 const BlogsBody = () => {
     return (

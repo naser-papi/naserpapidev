@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { SectionTitle, Summery } from "@/components";
+import { SectionTitle } from "@/components/molecule";
+import { Summery } from "@/components/organism/landing";
 import aboutImg from "assets/images/about-me.png";
 import aboutMeBkImg from "assets/images/about-me-bk.png";
 
 const AboutMe = () => {
     return (
-        <div className={"relative w-screen"}>
+        <div className={"relative w-screen py-5"}>
             <SectionTitle title={"About Me"} />
             <Image
                 src={aboutMeBkImg}

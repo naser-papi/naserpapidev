@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Skills } from "@/components";
+import { Skills } from "@/components/template/landing";
 
 const meta: Meta<typeof Skills> = {
     component: Skills,
-    title: "template/Skills",
+    title: "template/landing/Skills",
 };
 export default meta;
 

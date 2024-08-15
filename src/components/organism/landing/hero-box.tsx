@@ -1,4 +1,4 @@
-import { Avatar, Button, ContentFrame, Tag } from "@/components";
+import { Avatar, Button, ContentFrame, Tag } from "@/components/atom";
 import avatar from "assets/images/naser-avatar.jpg";
 import IconLabel from "@/components/atom/label-icon";
 

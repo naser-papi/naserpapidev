@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { SkillIcons } from "@/components";
+import { SkillIcons } from "@/components/organism/landing";
 
 const meta: Meta<typeof SkillIcons> = {
     component: SkillIcons,
-    title: "organism/SkillIcons",
+    title: "organism/landing/SkillIcons",
 };
 export default meta;
 

@@ -1,4 +1,4 @@
-import { BigCircleIcon } from "@/components";
+import { BigCircleIcon } from "@/components/atom";
 
 const SkillIcons = () => {
     return (

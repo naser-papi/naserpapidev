@@ -1,6 +1,6 @@
+"use client";
 import { ReactNode, useState, Children } from "react";
-import { IconBox } from "@/components";
-
+import { IconBox } from "@/components/atom";
 interface ProjectCarouselProps {
     children: ReactNode[];
 }

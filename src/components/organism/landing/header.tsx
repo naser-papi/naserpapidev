@@ -1,4 +1,4 @@
-import { Navbar, SimpleLogo } from "@/components";
+import { Navbar, SimpleLogo } from "@/components/molecule";
 
 const Header = () => {
     return (

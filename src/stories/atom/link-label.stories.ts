@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { LinkLable } from "@/components";
+import { LinkLable } from "@/components/atom";
 import LinkLabel from "@/components/atom/link-lable";
 
 const meta: Meta<typeof LinkLable> = {

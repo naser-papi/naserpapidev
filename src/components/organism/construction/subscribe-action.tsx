@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Button, TextBox } from "@/components";
+import { Button, TextBox } from "@/components/atom";
 import { APIPath } from "@/constants/api";
 import { useClientApi } from "@/hooks";
 import { isEmail } from "@/helpers";

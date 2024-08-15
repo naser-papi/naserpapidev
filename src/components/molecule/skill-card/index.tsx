@@ -8,11 +8,11 @@ interface SkillCardProps extends BaseHTMLAttributes<HTMLDivElement> {
 
 const SkillCard = ({ icon, title, subTitle }: SkillCardProps) => {
     return (
-        <div className={"flex gap-0 items-stretch"}>
+        <div className={"w-full flex gap-0 items-stretch"}>
             <div className={"rounded-l-lg bg-tertiary-900 w-[10px]"} />
             <div
                 className={
-                    "flex flex-col items-center gap-2 py-4 px-6 rounded-r-lg bg-secondary-800 font-ibm"
+                    "flex-1 flex flex-col items-center gap-2 py-4 px-6 rounded-r-lg bg-secondary-800 font-ibm"
                 }
             >
                 <div className={"text-3xl"}>{icon}</div>

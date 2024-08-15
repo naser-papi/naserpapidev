@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ProjectCard } from "@/components";
+import { ProjectCard } from "@/components/atom";
 import img1 from "assets/images/sample-prj-1.png";
 import img2 from "assets/images/sample-prj-2.png";
 

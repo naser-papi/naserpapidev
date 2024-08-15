@@ -1,4 +1,4 @@
-import { SectionTitle } from "@/components";
+import { SectionTitle } from "@/components/molecule";
 
 const WorksHeader = () => {
     return (

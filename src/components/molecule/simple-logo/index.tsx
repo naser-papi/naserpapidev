@@ -1,4 +1,4 @@
-import { LinkLable } from "@/components";
+import { LinkLable } from "@/components/atom";
 
 interface SimpleLogoProps {
     bold: string;

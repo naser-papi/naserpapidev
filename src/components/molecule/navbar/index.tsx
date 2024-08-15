@@ -1,6 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { LinkLable, SearchBoxContainer } from "@/components";
+import { LinkLable } from "@/components/atom";
+import SearchBoxContainer from "../search-box-container";
 
 const Navbar = () => {
     const pathname = usePathname();

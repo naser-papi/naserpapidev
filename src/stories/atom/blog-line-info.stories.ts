@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { BlogLineInfo } from "@/components";
+import { BlogLineInfo } from "@/components/atom";
 
 const meta: Meta<typeof BlogLineInfo> = {
     title: "Atom/BlogLineInfo",

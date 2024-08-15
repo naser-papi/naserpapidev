@@ -1,5 +1,4 @@
-import { IconBox } from "@/components";
-import LinkLabel from "@/components/atom/link-lable";
+import { IconBox, LinkLable } from "@/components/atom";
 
 const ContactFooter = () => {
     return (
@@ -27,8 +26,8 @@ const ContactFooter = () => {
             <h3 className={"col-span-2 text-xl font-bold text-center"}>
                 © 2024 Naser Papi. All rights reserved.
             </h3>
-            <LinkLabel text={"Privacy Policy"} isLink />
-            <LinkLabel text={"Terms & Conditions"} isLink />
+            <LinkLable text={"Privacy Policy"} isLink />
+            <LinkLable text={"Terms & Conditions"} isLink />
             <p className={"text-center col-span-2"}>
                 Figma Designer: JohannLeon
             </p>

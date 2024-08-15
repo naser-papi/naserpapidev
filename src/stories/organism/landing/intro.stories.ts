@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Intro } from "@/components";
+import { Intro } from "@/components/organism/landing";
 
 const meta: Meta<typeof Intro> = {
     parameters: {
         layout: "centered",
     },
-    title: "organism/Intro",
+    title: "organism/landing/Intro",
     component: Intro,
 };
 

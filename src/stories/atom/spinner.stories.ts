@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Spinner } from "@/components";
+import { Spinner } from "@/components/atom";
 
 const meta: Meta = {
     parameters: {

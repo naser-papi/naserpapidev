@@ -1,4 +1,8 @@
-import { BlogsHeader, BlogsActions, BlogsBody } from "@/components";
+import {
+    BlogsHeader,
+    BlogsActions,
+    BlogsBody,
+} from "@/components/organism/landing";
 
 const Blogs = () => {
     return (

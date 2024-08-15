@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ContactFooter } from "@/components";
+import { ContactFooter } from "@/components/organism/landing";
 
 const meta: Meta<typeof ContactFooter> = {
     component: ContactFooter,
-    title: "organism/ContactFooter",
+    title: "organism/landing/ContactFooter",
 };
 export default meta;
 

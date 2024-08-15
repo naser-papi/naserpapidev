@@ -1,4 +1,5 @@
-import { Button, SectionTitle, TextBox } from "@/components";
+import { Button, TextBox } from "@/components/atom";
+import { SectionTitle } from "@/components/molecule";
 
 const ContactForm = () => {
     return (

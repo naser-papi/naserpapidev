@@ -12,7 +12,7 @@ const Indicator = ({ count, text }: IndicatorProps) => {
                 {count}
             </strong>
             <strong
-                className={"text-primary-50 text-xl font-ibm whitespace-wrap"}
+                className={"text-primary-50 text-lg font-ibm whitespace-wrap"}
             >
                 {text}
             </strong>

@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { WorksCarousel } from "@/components";
+import { WorksCarousel } from "@/components/organism/landing";
 
 const meta: Meta<typeof WorksCarousel> = {
     component: WorksCarousel,
-    title: "organism/WorksCarousel",
+    title: "organism/landing/WorksCarousel",
 };
 export default meta;
 

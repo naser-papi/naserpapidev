@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { LabelIcon } from "@/components";
+import { LabelIcon } from "@/components/atom";
 
 const meta: Meta<typeof LabelIcon> = {
     parameters: {

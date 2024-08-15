@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ubunto, ibmmono } from "./(utils)/fonts";
-import * as process from "process";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
     title: "welcome to naser papi website ",

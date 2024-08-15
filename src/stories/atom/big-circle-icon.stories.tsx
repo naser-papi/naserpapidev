@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { BigCircleIcon } from "@/components";
+import { BigCircleIcon } from "@/components/atom";
 
 const meta: Meta<typeof BigCircleIcon> = {
     title: "Atom/BigCircleIcon",

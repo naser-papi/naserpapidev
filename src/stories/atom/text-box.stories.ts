@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { TextBox } from "@/components";
+import { TextBox } from "@/components/atom";
 
 const meta: Meta<typeof TextBox> = {
     title: "Atom/TextBox",

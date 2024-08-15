@@ -1,5 +1,4 @@
-import WorksHeader from "@/components/organism/works-header";
-import { WorksCarousel } from "@/components";
+import { WorksHeader, WorksCarousel } from "@/components/organism/landing";
 
 const Works = () => {
     return (

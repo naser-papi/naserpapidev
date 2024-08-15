@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Summery } from "@/components";
+import { Summery } from "@/components/organism/landing";
 
 const meta: Meta<typeof Summery> = {
     component: Summery,
-    title: "organism/Summery",
+    title: "organism/landing/Summery",
 };
 export default meta;
 

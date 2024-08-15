@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { BlogsBody } from "@/components";
+import { BlogsBody } from "@/components/organism/landing";
 
 const meta: Meta<typeof BlogsBody> = {
     component: BlogsBody,
-    title: "organism/BlogsBody",
+    title: "organism/landing/BlogsBody",
 };
 export default meta;
 

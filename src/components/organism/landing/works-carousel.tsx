@@ -1,4 +1,5 @@
-import { CardCarousel, ProjectCard } from "@/components";
+import { CardCarousel } from "@/components/molecule";
+import { ProjectCard } from "@/components/atom";
 import wodioDesk from "assets/images/projects/wodio-d.png";
 import wodioMob from "assets/images/projects/wodio-m.png";
 import optimyarDesk from "assets/images/projects/optimyar-d.png";

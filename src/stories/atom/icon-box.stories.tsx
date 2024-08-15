@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { IconBox } from "@/components";
+import { IconBox } from "@/components/atom";
 
 const meta: Meta<typeof IconBox> = {
     parameters: {

@@ -1,5 +1,5 @@
 "use client";
-import { SearchBox } from "@/components";
+import { SearchBox } from "@/components/atom";
 import { useState } from "react";
 
 const SearchBoxContainer = () => {

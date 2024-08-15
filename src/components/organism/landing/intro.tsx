@@ -1,4 +1,4 @@
-import { TitleIcon } from "@/components";
+import { TitleIcon } from "@/components/molecule";
 
 const Intro = () => {
     return (
@@ -11,7 +11,7 @@ const Intro = () => {
                 <h4>{"<h1>"}</h4>
                 <h3>Hey</h3>
                 <h3>
-                    I'm <span>Naser</span>
+                    I am <span>Naser</span>
                 </h3>
                 <h3>Senior Web Developer</h3>
                 <h4>{"</h1>"}</h4>

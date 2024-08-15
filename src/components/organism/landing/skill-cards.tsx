@@ -1,4 +1,4 @@
-import { SkillCard } from "@/components";
+import { SkillCard } from "@/components/molecule";
 
 const SkillCards = () => {
     return (

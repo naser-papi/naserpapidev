@@ -1,6 +1,10 @@
 import Image from "next/image";
 import skillsBk from "assets/images/skills-bk.png";
-import { SkillCards, SkillHeader, SkillIcons } from "@/components";
+import {
+    SkillCards,
+    SkillHeader,
+    SkillIcons,
+} from "@/components/organism/landing";
 
 const Skills = () => {
     return (

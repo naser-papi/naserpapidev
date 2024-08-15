@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { TitleIcon } from "@/components";
+import { TitleIcon } from "@/components/molecule";
 
 const meta: Meta<typeof TitleIcon> = {
     parameters: {

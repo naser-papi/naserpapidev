@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Navbar } from "@/components";
+import { Navbar } from "@/components/molecule";
 
 const meta: Meta<typeof Navbar> = {
     parameters: {

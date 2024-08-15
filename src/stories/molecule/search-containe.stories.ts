@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { SearchBoxContainer } from "@/components";
+import { SearchBoxContainer } from "@/components/molecule";
 
 const meta: Meta<typeof SearchBoxContainer> = {
     parameters: {

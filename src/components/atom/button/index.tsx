@@ -1,7 +1,7 @@
 "use client";
 import { ButtonHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
-import { Spinner } from "@/components";
+import Spinner from "../spinner";
 import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(

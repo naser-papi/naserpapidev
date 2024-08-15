@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ContactForm } from "@/components";
+import { ContactForm } from "@/components/organism/landing";
 
 const meta: Meta<typeof ContactForm> = {
     component: ContactForm,
-    title: "organism/ContactForm",
+    title: "organism/landing/ContactForm",
 };
 export default meta;
 

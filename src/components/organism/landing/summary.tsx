@@ -18,7 +18,7 @@ const Summary = () => {
                 Striving to never stop learning and improving.
             </p>
             <p>
-                When I'm not coding, I am <em>writing bolgs</em>, reading, or
+                When I am not coding, I am <em>writing bolgs</em>, reading, or
                 picking up some new hands-on art project like{" "}
                 <em>photography</em>.
             </p>

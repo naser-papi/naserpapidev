@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { HeroBox } from "@/components";
+import { HeroBox } from "@/components/organism/landing";
 
 const meta: Meta<typeof HeroBox> = {
     parameters: {
         layout: "centered",
     },
-    title: "organism/HeroBox",
+    title: "organism/landing/HeroBox",
     component: HeroBox,
 };
 export default meta;

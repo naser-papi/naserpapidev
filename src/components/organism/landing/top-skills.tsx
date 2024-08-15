@@ -1,4 +1,4 @@
-import { Indicator } from "@/components";
+import { Indicator } from "@/components/molecule";
 
 const TopSkills = () => {
     return (
