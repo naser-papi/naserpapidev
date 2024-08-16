@@ -2,7 +2,7 @@ import { SkillCard } from "@/components/molecule";
 
 const SkillCards = () => {
     return (
-        <div className={"grid gap-y-6"}>
+        <div className={"w-full grid gap-y-6"}>
             <SkillCard
                 title={"Web Development"}
                 subTitle={"HTML.CSS.JS.REACT"}

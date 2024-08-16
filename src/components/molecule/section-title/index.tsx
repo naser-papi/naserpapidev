@@ -15,6 +15,9 @@ const sectionTitleVariants = cva(["text-center"], {
                 "font-semibold",
                 "text-primary-50",
                 "[&>.line-with-bullets]:hidden",
+                "sm:text-4xl",
+                "sm:py-4",
+                "sm:px-20",
             ],
             underline: [
                 "text-4xl",
@@ -23,6 +26,7 @@ const sectionTitleVariants = cva(["text-center"], {
                 "[&>.line-with-bullets]:bg-secondary-700",
                 "[&>.line-with-bullets:after]:bg-secondary-800",
                 "[&>.line-with-bullets:before]:bg-secondary-800",
+                "sm:text-8xl",
             ],
         },
     },

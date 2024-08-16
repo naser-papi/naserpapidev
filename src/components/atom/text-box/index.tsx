@@ -47,7 +47,7 @@ const labelVariants = cva([], {
                 "text-primary-100",
                 "z-10",
             ],
-            secondary: ["text-secondary-600", "text-lg"],
+            secondary: ["text-secondary-600", "text-lg", "sm:text-2xl"],
         },
         disabled: {
             true: [],
@@ -80,7 +80,7 @@ const inputVariants = cva(["w-full", "bg-transparent", "outline-none"], {
     variants: {
         intent: {
             primary: ["text-primary-50", "p-3"],
-            secondary: ["text-primary-200"],
+            secondary: ["text-primary-200", "sm:text-2xl"],
         },
         disabled: {
             true: [],

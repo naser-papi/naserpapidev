@@ -21,7 +21,15 @@ const buttonVariants = cva(
             size: {
                 small: ["h-6", "px-2", "text-sm", "font-normal"],
                 medium: ["h-8", "px-4", "text-base", "font-normal"],
-                large: ["h-12", "px-6", "text-md", "font-semibold"],
+                large: [
+                    "h-12",
+                    "px-6",
+                    "text-md",
+                    "font-semibold",
+                    "sm:text-2xl",
+                    "sm:px-8",
+                    "sm:h-16",
+                ],
             },
             loading: {
                 true: ["grid", "grid-cols-[auto_1fr]"],

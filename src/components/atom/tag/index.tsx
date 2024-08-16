@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { BaseHTMLAttributes } from "react";
 
 const tagVariants = cva(
-    ["rounded-full", "px-2", "py-0.5", "text-sm", "font-base"],
+    ["rounded-full", "px-2", "py-0.5", "text-sm", "font-base", "sm:text-lg"],
     {
         variants: {
             intend: {
@@ -12,6 +12,9 @@ const tagVariants = cva(
                     "text-primary-100",
                     "px-3",
                     "py-1",
+                    "sm:text-2xl",
+                    "sm:px-6",
+                    "sm:py-2",
                 ],
             },
         },

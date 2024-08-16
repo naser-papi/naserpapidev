@@ -13,7 +13,7 @@ export default function Home() {
         redirect("/construction");
     }
     return (
-        <main className="min-h-screen bg-primary-700 grid ">
+        <main className="min-h-screen bg-primary-700 grid place-items-center ">
             <Header />
             <Hero />
             <AboutMe />

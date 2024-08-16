@@ -2,7 +2,7 @@ const Summary = () => {
     return (
         <div
             className={
-                "grid gap-y-2 max-w-xs bg-primary-800 rounded-[40px] p-6 text-primary-50 [&>span]:text-secondary-600 [&>h4]:text-secondary-600 [&_em]:text-secondary-600"
+                "grid gap-y-2 w-full max-w-[640px] bg-primary-800 rounded-[40px] p-6 text-primary-50 [&>span]:text-secondary-600 [&>h4]:text-secondary-600 [&_em]:text-secondary-600 [&_p]:pl-3 [&_h4]:pl-4 sm:text-xl sm:p-8"
             }
         >
             <span>{"<p>"}</span>

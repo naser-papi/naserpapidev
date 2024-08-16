@@ -9,7 +9,11 @@ interface TitleIconProps extends LabelHTMLAttributes<HTMLHeadingElement> {
 const TitleIcon = ({ title, icon }: TitleIconProps) => {
     return (
         <div className={"flex items-center gap-3"}>
-            <h1 className={"text-2xl font-bold font-ibm text-secondary-900"}>
+            <h1
+                className={
+                    "text-2xl font-bold font-ibm text-secondary-900 sm:text-4xl sm:font-semibold"
+                }
+            >
                 {title}
             </h1>
             <IconBox icon={icon} />

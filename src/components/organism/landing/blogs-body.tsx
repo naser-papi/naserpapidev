@@ -12,12 +12,18 @@ const BlogsBody = () => {
             <Image
                 src={bbImg}
                 alt={"blogs"}
-                className={"w-[120px] h-[120px] object-cover self-center"}
+                className={
+                    "w-[320px] h-[320px] object-cover self-center sm:w-[420px] sm:h-[420px]"
+                }
             />
-            <h2 className={"text-secondary-600 text-3xl font-semibold"}>
+            <h2
+                className={
+                    "text-secondary-600 text-3xl font-semibold sm:text-4xl"
+                }
+            >
                 What does it take to become a web developer?
             </h2>
-            <p className={"text-base text-primary-100"}>
+            <p className={"text-base text-primary-100 sm:text-2xl"}>
                 Web development, also known as website development, encompasses
                 a variety of tasks and processes involved in creating websites
                 for the internet…

@@ -9,7 +9,7 @@ const LinkButton = ({ text, onClick, ...rest }: LinkButtonProps) => {
         <button
             onClick={onClick}
             className={
-                "text-lg font-normal flex items-center gap-1 text-secondary-500"
+                "text-lg font-normal flex items-center gap-1 text-secondary-500 sm:text-3xl"
             }
             {...rest}
         >

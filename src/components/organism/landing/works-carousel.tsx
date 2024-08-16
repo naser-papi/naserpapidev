@@ -19,30 +19,35 @@ const WorksCarousel = () => {
                 image2={wodioDesk}
                 title={"Wodio AI app"}
                 link={"https://wodio.ai/"}
+                description={"sales marketing based-on AI"}
             />
             <ProjectCard
                 image1={optimyarMob}
                 image2={optimyarDesk}
                 title={"Optimyar LMS app"}
                 link={"https://app.optimyar.com"}
+                description={"sales marketing based-on AI"}
             />
             <ProjectCard
                 image1={ariyadisMob}
                 image2={ariyadisDesk}
                 title={"Kookaat IS app"}
                 link={"https://www.ariyadis.com/#platform"}
+                description={"sales marketing based-on AI"}
             />
             <ProjectCard
                 image1={niocMob}
                 image2={niocDesk}
                 title={"NIOC TDMS app"}
                 link={"/projects/tdms-winapp"}
+                description={"sales marketing based-on AI"}
             />
             <ProjectCard
                 image1={kwpaMob}
                 image2={kwpaDesk}
                 title={"KWPA Finance App"}
                 link={"/projects/kwpa-isapp"}
+                description={"sales marketing based-on AI"}
             />
         </CardCarousel>
     );

@@ -7,12 +7,22 @@ interface IndicatorProps extends BaseHTMLAttributes<HTMLLabelElement> {
 
 const Indicator = ({ count, text }: IndicatorProps) => {
     return (
-        <div className={"grid grid-cols-[50px_auto] items-center gap-x-4"}>
-            <strong className={"font-medium text-5xl text-secondary-700"}>
+        <div
+            className={
+                "grid grid-cols-[50px_1fr] items-center gap-x-4 sm:grid-cols-[80px_1fr]"
+            }
+        >
+            <strong
+                className={
+                    "font-medium text-5xl text-secondary-700 sm:text-7xl"
+                }
+            >
                 {count}
             </strong>
             <strong
-                className={"text-primary-50 text-lg font-ibm whitespace-wrap"}
+                className={
+                    "text-primary-50 text-lg font-ibm whitespace-wrap sm:text-2xl"
+                }
             >
                 {text}
             </strong>

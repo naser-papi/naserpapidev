@@ -1,10 +1,10 @@
-import { IconBox, LinkLable } from "@/components/atom";
+import { IconBox } from "@/components/atom";
 
 const ContactFooter = () => {
     return (
         <div
             className={
-                "grid grid-cols-2 gap-4 border-t-primary-400 py-5 text-primary-200"
+                "grid grid-cols-2 gap-4 border-t-primary-400 text-primary-200 pb-12"
             }
         >
             <div
@@ -23,12 +23,14 @@ const ContactFooter = () => {
                     intend={"secondary"}
                 />
             </div>
-            <h3 className={"col-span-2 text-xl font-bold text-center"}>
+            <h3
+                className={
+                    "pt-12 col-span-2 text-lg font-bold text-left sm:text-center sm:text-2xl"
+                }
+            >
                 © 2024 Naser Papi. All rights reserved.
             </h3>
-            <LinkLable text={"Privacy Policy"} isLink />
-            <LinkLable text={"Terms & Conditions"} isLink />
-            <p className={"text-center col-span-2"}>
+            <p className={"text-center col-span-2 pt-6"}>
                 Figma Designer: JohannLeon
             </p>
         </div>

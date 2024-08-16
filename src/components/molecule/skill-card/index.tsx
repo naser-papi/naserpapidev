@@ -12,13 +12,13 @@ const SkillCard = ({ icon, title, subTitle }: SkillCardProps) => {
             <div className={"rounded-l-lg bg-tertiary-900 w-[10px]"} />
             <div
                 className={
-                    "flex-1 flex flex-col items-center gap-2 py-4 px-6 rounded-r-lg bg-secondary-800 font-ibm"
+                    "flex-1 flex flex-col items-center gap-2 py-4 px-6 rounded-r-lg bg-secondary-800 text-primary-900 font-ibm"
                 }
             >
-                <div className={"text-3xl"}>{icon}</div>
+                <div className={"text-3xl sm:text-5xl"}>{icon}</div>
 
-                <h2 className={"text-xl font-semibold"}>{title}</h2>
-                <h6 className={"text-lg font-thin"}>{subTitle}</h6>
+                <h2 className={"text-xl font-semibold sm:text-2xl"}>{title}</h2>
+                <h6 className={"text-lg font-thin sm:text-2xl"}>{subTitle}</h6>
             </div>
         </div>
     );

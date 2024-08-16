@@ -10,19 +10,19 @@ const HeroBox = () => {
                     "h-full w-full grid place-items-center text-primary-100"
                 }
             >
-                <div className={"flex flex-col gap-3 items-center"}>
+                <div className={"flex flex-col gap-3 items-center sm:text-2xl"}>
                     <Avatar src={avatar} alt={"naser papi"} />
                     <h3>Naser Papi</h3>
                     <strong>Senior Web Developer</strong>
                 </div>
-                <div className={"flex flex-col gap-3"}>
+                <div className={"flex flex-col gap-3 sm:gap-6"}>
                     <IconLabel
                         icon={<i className={"fa-solid fa-envelope"} />}
                         label={"naserpapi@hotmail.com"}
                     />
                     <IconLabel
                         icon={<i className="fa-solid fa-location-dot" />}
-                        label={"Iran"}
+                        label={"Iran, Tehran"}
                     />
                     <IconLabel
                         icon={<i className="fa-solid fa-display-code" />}

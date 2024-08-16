@@ -11,7 +11,7 @@ const BlogLineInfo = ({ writer, date, readTime }: BlogLineInfoProps) => {
     return (
         <div
             className={
-                "flex items-center gap-2 text-base font-normal text-primary-500 [&>strong]:text-primary-50 [&>strong]:font-normal"
+                "flex items-center gap-2 text-base font-normal text-primary-500 [&>strong]:text-primary-50 [&>strong]:font-normal sm:text-2xl"
             }
         >
             <strong>Text</strong>

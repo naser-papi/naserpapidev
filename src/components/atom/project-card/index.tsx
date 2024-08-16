@@ -7,48 +7,63 @@ export interface ProjectCardProps {
     image2: StaticImageData;
     title: string;
     link: string;
+    description: string;
 }
 
-const ProjectCard = ({ image1, image2, title, link }: ProjectCardProps) => {
+const ProjectCard = ({
+    image1,
+    image2,
+    title,
+    link,
+    description,
+}: ProjectCardProps) => {
     return (
-        <Link href={link} target={"_blank"}>
-            <div className={"relative w-[300px] h-[200px]"}>
+        <div className={"text-center"}>
+            <Link href={link} target={"_blank"}>
                 <div
                     className={
-                        "absolute z-10 text-secondary-600 top-[30px] left-[140px]"
+                        "relative w-[300px] h-[200px] sm:w-[600px] sm:h-[400px]"
                     }
                 >
-                    <i className="fa-sharp-duotone fa-solid fa-bullseye-pointer" />
+                    <div
+                        className={
+                            "absolute z-10 text-secondary-600 top-[30px] left-[140px] sm:top-[65px] sm:left-[290px] sm:text-2xl"
+                        }
+                    >
+                        <i className="fa-sharp-duotone fa-solid fa-bullseye-pointer" />
+                    </div>
+                    <h2
+                        className={
+                            "absolute z-10 text-secondary-600 top-[25px] left-[160px] border-b-2 border-primary-100 font-ibm sm:top-[60px] sm:left-[320px] sm:text-2xl"
+                        }
+                    >
+                        {title}
+                    </h2>
+                    <Image
+                        src={image1}
+                        alt={"image"}
+                        className={
+                            "absolute left-[25px] top-[26px] z-10 object-cover w-[100px] h-[130px] sm:left-[50px] sm:top-[52px] sm:w-[200px] sm:h-[260px]"
+                        }
+                    />
+                    <Image
+                        src={image2}
+                        alt={"image"}
+                        className={
+                            "absolute top-[60px] left-[140px] z-10 object-cover w-[138px] h-[82px] sm:top-[120px] sm:left-[280px] sm:w-[272px] sm:h-[164px]"
+                        }
+                    />
+                    <Image
+                        src={frameImg}
+                        alt={"frame"}
+                        fill
+                        className={"z-0 object-cover"}
+                    />
                 </div>
-                <h2
-                    className={
-                        "absolute z-10 text-secondary-600 top-[25px] left-[160px] border-b-2 border-primary-100 font-ibm"
-                    }
-                >
-                    {title}
-                </h2>
-                <Image
-                    src={image1}
-                    alt={"image"}
-                    className={
-                        "absolute left-[25px] top-[26px] z-10 object-cover w-[100px] h-[130px]"
-                    }
-                />
-                <Image
-                    src={image2}
-                    alt={"image"}
-                    className={
-                        "absolute top-[60px] left-[140px] z-10 object-cover w-[138px] h-[82px]"
-                    }
-                />
-                <Image
-                    src={frameImg}
-                    alt={"frame"}
-                    fill
-                    className={"z-0 object-cover"}
-                />
-            </div>
-        </Link>
+            </Link>
+            <br />
+            <p className={"sm:text-2xl"}>{description}</p>
+        </div>
     );
 };
 
