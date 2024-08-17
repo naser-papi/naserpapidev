@@ -14,3 +14,4 @@ export { default as Summery } from "./summary";
 export { default as TopSkills } from "./top-skills";
 export { default as WorksCarousel } from "./works-carousel";
 export { default as WorksHeader } from "./works-header";
+export { default as HeaderSocial } from "./header-social";

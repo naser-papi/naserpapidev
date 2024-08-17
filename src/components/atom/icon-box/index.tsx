@@ -2,18 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { BaseHTMLAttributes } from "react";
 
 const iconBoxVariants = cva(
-    [
-        "p-2",
-        "text-xl",
-        "rounded-full",
-        "w-12",
-        "h-12",
-        "text-center",
-        "sm:text-4xl",
-        "sm:h-16",
-        "sm:w-16",
-        "sm:p-3",
-    ],
+    ["p-2", "text-xl", "rounded-full", "w-12", "h-12", "text-center"],
     {
         variants: {
             intend: {
@@ -21,8 +10,20 @@ const iconBoxVariants = cva(
                     "text-secondary-900",
                     "bg-primary-600",
                     "bg-opacity-70",
+                    "sm:text-4xl",
+                    "sm:h-16",
+                    "sm:w-16",
+                    "sm:p-3",
                 ],
-                secondary: ["bg-secondary-900", "text-primary-600"],
+                secondary: [
+                    "bg-secondary-900",
+                    "text-primary-600",
+                    "sm:text-4xl",
+                    "sm:h-16",
+                    "sm:w-16",
+                    "sm:p-3",
+                ],
+                tertiary: ["text-secondary-500"],
             },
         },
         defaultVariants: {
