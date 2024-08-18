@@ -7,7 +7,10 @@ import {
 const Blogs = () => {
     return (
         <div
-            className={"w-screen grid gap-4 bg-primary-700 py-12 px-6 sm:p-12"}
+            id={"blogs"}
+            className={
+                "w-screen grid gap-y-4 bg-primary-700 py-12 px-6 sm:p-12 xl:px-20 scroll-mt-10"
+            }
         >
             <BlogsHeader />
             <BlogsBody />

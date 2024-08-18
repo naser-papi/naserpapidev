@@ -2,7 +2,11 @@ import { BigCircleIcon } from "@/components/atom";
 
 const SkillIcons = () => {
     return (
-        <div className={"w-full grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-y-16"}>
+        <div
+            className={
+                "w-full grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-y-16 xl:grid-cols-4"
+            }
+        >
             <BigCircleIcon
                 icon={<i className="fa-brands fa-node-js" />}
                 color={"#E7A020"}

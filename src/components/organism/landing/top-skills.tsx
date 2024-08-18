@@ -4,7 +4,7 @@ const TopSkills = () => {
     return (
         <div
             className={
-                "grid place-items-start gap-y-12 py-12 px-9 rounded-[80px] bg-primary-900 w-full max-w-[640px]"
+                "top-skills w-full max-w-5xl grid place-items-start gap-y-12 py-12 px-9 rounded-[80px] bg-primary-900 "
             }
         >
             <Indicator count={2} text={"Programming Languages"} />

@@ -7,8 +7,9 @@ import {
 const Contact = () => {
     return (
         <div
+            id={"contact"}
             className={
-                "grid w-screen px-6 bg-primary-700 pt-12 gap-y-12 sm:p-12"
+                "grid w-screen px-6 bg-primary-700 pt-12 gap-y-12 sm:p-12 xl:px-20 scroll-mt-10"
             }
         >
             <ContactHeader />

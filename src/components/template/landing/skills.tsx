@@ -8,7 +8,10 @@ import {
 
 const Skills = () => {
     return (
-        <div className={"relative w-screen py-12 px-6 sm:p-12"}>
+        <div
+            className={"relative w-screen py-12 px-6 sm:p-12 xl:px-20"}
+            id={"skills"}
+        >
             <Image
                 src={skillsBk}
                 alt={"skills"}
@@ -17,7 +20,7 @@ const Skills = () => {
             />
             <div
                 className={
-                    "relative w-full grid place-items-center gap-y-12 z-10 py-12"
+                    "relative w-full grid place-items-center gap-y-12 z-10 py-12 xl:gap-y-40"
                 }
             >
                 <SkillHeader />

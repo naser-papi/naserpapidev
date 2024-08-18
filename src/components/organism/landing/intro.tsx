@@ -30,7 +30,7 @@ const Intro = () => {
             </div>
             <Link
                 href={"https://calendly.com/naserpapi/technical"}
-                className={"justify-self-center"}
+                className={"justify-self-center xl:justify-self-start"}
             >
                 <TitleIcon
                     title={"Let's Talk"}

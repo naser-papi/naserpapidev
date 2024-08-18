@@ -8,7 +8,9 @@ const ContactFooter = () => {
             }
         >
             <div
-                className={"flex items-center gap-6 justify-center col-span-2"}
+                className={
+                    "flex items-center gap-6 justify-center col-span-2 xl:gap-12"
+                }
             >
                 <IconBox
                     icon={<i className="fa-brands fa-linkedin-in" />}
@@ -25,7 +27,7 @@ const ContactFooter = () => {
             </div>
             <h3
                 className={
-                    "pt-12 col-span-2 text-lg font-bold text-left sm:text-center sm:text-2xl"
+                    "pt-12 col-span-2 text-lg font-bold text-left sm:text-center sm:text-2xl xl:text-4xl"
                 }
             >
                 © 2024 Naser Papi. All rights reserved.

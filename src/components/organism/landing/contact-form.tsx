@@ -31,7 +31,7 @@ const ContactForm = () => {
                 text={"Send Message"}
                 icon={<i className="fa-regular fa-paper-plane" />}
                 shape={"oval"}
-                className={"col-span-2 justify-self-center"}
+                className={"col-span-2 justify-self-center xl:w-full"}
                 intend={"primary"}
                 size={"large"}
             />

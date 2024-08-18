@@ -6,7 +6,12 @@ import aboutMeBkImg from "assets/images/about-me-bk.png";
 
 const AboutMe = () => {
     return (
-        <div className={"relative w-screen py-12 px-6 sm:p-12"}>
+        <div
+            className={
+                "relative w-screen py-12 px-6 sm:p-12 scroll-mt-10 lg:px-12 xl:px-20"
+            }
+            id="about-me"
+        >
             <Image
                 src={aboutMeBkImg}
                 alt={"naser papi background image"}
@@ -15,7 +20,7 @@ const AboutMe = () => {
             />
             <div
                 className={
-                    "relative w-full grid place-items-center gap-y-4 z-10 sm:gap-12"
+                    "relative w-full grid place-items-center gap-x-6 gap-y-4 z-10 sm:gap-12 xl:grid-cols-[1fr_auto] xl:[&>.section-title]:col-span-2"
                 }
             >
                 <SectionTitle title="About Me" />
@@ -23,7 +28,7 @@ const AboutMe = () => {
                 <Image
                     src={aboutImg}
                     alt={"about naser papi"}
-                    className={"w-[320px] sm:w-[420px]"}
+                    className={"w-[320px] sm:w-[420px] xl:w-[320px]"}
                 />
             </div>
         </div>

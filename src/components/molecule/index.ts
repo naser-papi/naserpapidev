@@ -6,3 +6,4 @@ export { default as SectionTitle } from "./section-title";
 export { default as SimpleLogo } from "./simple-logo";
 export { default as SkillCard } from "./skill-card";
 export { default as TitleIcon } from "./title-icon";
+export { default as NarrowNavIcon } from "./narrow-nav-icon";

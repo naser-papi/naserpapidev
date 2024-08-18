@@ -2,7 +2,7 @@ import { SectionTitle } from "@/components/molecule";
 
 const WorksHeader = () => {
     return (
-        <div className={"flex flex-col items-center gap-2 sm:gap-4"}>
+        <div className={"flex flex-col max-w-5xl items-center gap-2 sm:gap-4"}>
             <SectionTitle title={"Works"} mode={"underline"} />
             <p
                 className={

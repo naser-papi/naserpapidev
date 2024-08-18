@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
-const sectionTitleVariants = cva(["text-center"], {
+const sectionTitleVariants = cva(["section-title", "text-center"], {
     variants: {
         mode: {
             default: [
