@@ -3,7 +3,11 @@ import { SectionTitle } from "@/components/molecule";
 
 const ContactForm = () => {
     return (
-        <form className={"grid grid-cols-2 gap-y-12 gap-x-4"}>
+        <form
+            className={
+                "w-full grid grid-cols-2 gap-y-12 gap-x-4 max-w-[1280px]"
+            }
+        >
             <SectionTitle
                 title={"Send Me A Message"}
                 className={"col-span-2"}

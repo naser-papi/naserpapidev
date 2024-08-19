@@ -1,7 +1,8 @@
 "use client";
-import { ReactNode, useState, Children } from "react";
+import { ReactNode, useState, Children, BaseHTMLAttributes } from "react";
 import { IconBox } from "@/components/atom";
-interface ProjectCarouselProps {
+
+interface ProjectCarouselProps extends BaseHTMLAttributes<HTMLDivElement> {
     children: ReactNode[];
 }
 
@@ -19,7 +20,9 @@ const CardCarousel = ({ children }: ProjectCarouselProps) => {
     };
 
     return (
-        <div className="relative grid w-full overflow-x-hidden place-items-center card-carousel">
+        <div
+            className={`relative grid w-full overflow-hidden place-items-center card-carousel`}
+        >
             <div
                 className={
                     "absolute left-0 top-1/2 transform -translate-y-1/2 text-2xl p-2 z-10 cursor-pointer"

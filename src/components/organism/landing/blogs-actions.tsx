@@ -2,7 +2,7 @@ import { Button } from "@/components/atom";
 
 const BlogsAction = () => {
     return (
-        <div className={"flex items-center w-full gap-4"}>
+        <div className={"blogs-action flex items-center w-full gap-4"}>
             <Button
                 text={"View More"}
                 shape={"oval"}

@@ -6,7 +6,7 @@ const BlogsBody = () => {
     return (
         <div
             className={
-                "grid place-items-center gap-x-6 gap-y-8 py-6 my-6 border-y-[1px] border-primary-100 xl:grid-cols-[auto_1fr]"
+                "blogs-body grid place-items-center gap-x-6 gap-y-8 py-6 my-6 border-y-[1px] border-primary-100 xl:grid-cols-[auto_1fr]"
             }
         >
             <Image

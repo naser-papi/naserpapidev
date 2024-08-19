@@ -9,7 +9,7 @@ const Blogs = () => {
         <div
             id={"blogs"}
             className={
-                "w-screen grid gap-y-4 bg-primary-700 py-12 px-6 sm:p-12 xl:px-20 scroll-mt-10"
+                "w-full grid place-items-center gap-y-4 bg-primary-700 py-12 px-6 sm:p-12 xl:px-20 scroll-mt-10 [&>.blogs-body]:max-w-[1280px] [&>.blogs-action]:max-w-[1280px]"
             }
         >
             <BlogsHeader />

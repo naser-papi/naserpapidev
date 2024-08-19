@@ -8,7 +8,7 @@ const AboutMe = () => {
     return (
         <div
             className={
-                "relative w-screen py-12 px-6 sm:p-12 scroll-mt-10 lg:px-12 xl:px-20"
+                "relative w-full py-12 px-6 sm:p-12 scroll-mt-10 lg:px-12 xl:px-20 2xl:py-32 2xl:px-32"
             }
             id="about-me"
         >
@@ -16,11 +16,11 @@ const AboutMe = () => {
                 src={aboutMeBkImg}
                 alt={"naser papi background image"}
                 fill
-                className={"object-cover x-0"}
+                className={"object-cover px-0"}
             />
             <div
                 className={
-                    "relative w-full grid place-items-center gap-x-6 gap-y-4 z-10 sm:gap-12 xl:grid-cols-[1fr_auto] xl:[&>.section-title]:col-span-2"
+                    "relative w-full grid place-items-center gap-x-6 gap-y-4 z-10 sm:gap-12 xl:grid-cols-[1fr_auto] xl:[&>.section-title]:col-span-2 2xl:place-items-start 2xl:[&>.section-title]:col-span-1  2xl:[&>.img]:row-span-2 2xl:[&>.img]:row-start-1 2xl:[&>.img]:col-start-2 max-w-[1280px] mx-auto"
                 }
             >
                 <SectionTitle title="About Me" />
@@ -28,7 +28,9 @@ const AboutMe = () => {
                 <Image
                     src={aboutImg}
                     alt={"about naser papi"}
-                    className={"w-[320px] sm:w-[420px] xl:w-[320px]"}
+                    className={
+                        "img w-[320px] sm:w-[420px] xl:w-[320px] 2xl:w-[400px]"
+                    }
                 />
             </div>
         </div>

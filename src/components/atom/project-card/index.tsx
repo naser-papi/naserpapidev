@@ -18,7 +18,7 @@ const ProjectCard = ({
     description,
 }: ProjectCardProps) => {
     return (
-        <div className={"text-center"}>
+        <div className={"text-center py-4"}>
             <Link href={link} target={"_blank"}>
                 <div
                     className={
