@@ -9,12 +9,12 @@ const WorksHeader = () => {
                     "text-center text-lg font-base text-primary-100 sm:text-2xl"
                 }
             >
-                A Comprehensive Showcase of the Diverse Projects I've
+                A Comprehensive Showcase of the Diverse Projects I&apos;ve
                 Engineered, Demonstrating My Commitment to Excellence and
                 Innovation in Every Endeavor. Each project is a testament to my
                 ability to blend creativity with technical precision, delivering
                 solutions that not only meet but exceed expectations, pushing
-                the boundaries of what's possible.
+                the boundaries of what&apos;s possible.
             </p>
         </div>
     );

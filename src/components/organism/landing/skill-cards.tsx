@@ -5,12 +5,12 @@ const SkillCards = () => {
         <div className={"w-full grid gap-y-6 gap-x-6 xl:grid-cols-2"}>
             <SkillCard
                 title={"Web Development"}
-                subTitle={"HTML.CSS.JS.REACT"}
+                subTitle={"HTML.CSS.JS.REACT.NEXT.NEST"}
                 icon={<i className="fa-regular fa-desktop" />}
             />
             <SkillCard
                 title={"App Development"}
-                subTitle={"iOS.Android"}
+                subTitle={"iOS.Android.Electron"}
                 icon={<i className="fa-regular fa-mobile" />}
             />
         </div>

@@ -23,8 +23,9 @@ const Intro = () => {
             >
                 <h4>{"<p>"}</h4>
                 <p>
-                    I help business grow by crafting amazing web experiences. If
-                    you’re looking for a developer that likes to get stuff done,
+                    I help business grow by crafting amazing web and mobile
+                    experiences. If you’re looking for a developer that likes to
+                    get stuff done,
                 </p>
                 <h4>{"</p>"}</h4>
             </div>

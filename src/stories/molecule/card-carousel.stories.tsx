@@ -18,18 +18,21 @@ export const Default: StoryObj<typeof CardCarousel> = {
                 image1={img1}
                 image2={img2}
                 title={"Project Test"}
+                description={"this is a test description"}
             />,
             <ProjectCard
                 link={"#"}
                 image1={img1}
                 image2={img2}
                 title={"Project New"}
+                description={"this is a test description"}
             />,
             <ProjectCard
                 link={"#"}
                 image1={img1}
                 image2={img2}
                 title={"Project old"}
+                description={"this is a test description"}
             />,
         ],
     },

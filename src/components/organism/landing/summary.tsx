@@ -10,21 +10,23 @@ const Summary = () => {
             <p>
                 My name is Naser and I specialize in web developement that
                 utilizes <em>JAVASCRIPT</em>, <em>HTML&CSS</em>,{" "}
-                <em>TYPESCRIPT</em>, <em>NEXTJS</em>, and <em>MONGODB</em> etc.
+                <em>TYPESCRIPT</em>, <em>NEXT.js</em>, <em>NEST.js</em>, and{" "}
+                <em>MONGODB</em> etc.
             </p>
             <p>
-                I am a highly motivated individual and eternal optimist
-                dedicated to writing clear, concise, robust code that works.
-                Striving to never stop learning and improving.
+                I am a highly motivated individual and an eternal optimist
+                dedicated to writing clear, <em>SOLID</em>, robust code that
+                works. I strive never to stop <em>learning</em> and improving.
             </p>
             <p>
-                When I am not coding, I am <em>writing bolgs</em>, reading, or
-                picking up some new hands-on art project like{" "}
-                <em>photography</em>.
+                When I&apos;m not coding, I write <em>blog posts</em>, read, or
+                learn new ideas to assist other developers with interesting
+                articles and tricks.
             </p>
             <p>
-                I like to have my perspective and belief systems challenged so
-                that I see the world through new eyes.
+                I am excited to contribute to other developer&apos;s mission of
+                delivering high-quality products through innovation and
+                teamwork.
             </p>
             <span>{"<p>"}</span>
         </div>
