@@ -1,7 +1,11 @@
 import UnderConstruction from "@/components/template/under-construction";
 import Background from "./background";
+import { redirect } from "next/navigation";
 
 export default function constructPage() {
+    if (process.env.SHOW_CONSTRUCTION !== "yes") {
+        redirect("/");
+    }
     return (
         <>
             <Background />
