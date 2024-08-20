@@ -1,4 +1,6 @@
 import { IconBox } from "@/components/atom";
+import { SocialLinks } from "@/constants";
+import Link from "next/link";
 
 const ContactFooter = () => {
     return (
@@ -12,18 +14,18 @@ const ContactFooter = () => {
                     "flex items-center gap-6 justify-center col-span-2 xl:gap-12"
                 }
             >
-                <IconBox
-                    icon={<i className="fa-brands fa-linkedin-in" />}
-                    intend={"secondary"}
-                />
-                <IconBox
-                    icon={<i className="fa-brands fa-github" />}
-                    intend={"secondary"}
-                />
-                <IconBox
-                    icon={<i className="fa-brands fa-telegram" />}
-                    intend={"secondary"}
-                />
+                {SocialLinks.map((social) => (
+                    <Link
+                        href={social.link}
+                        target={"_blank"}
+                        key={social.title.replace(" ", "_")}
+                    >
+                        <IconBox
+                            icon={<i className={social.icon} />}
+                            intend={"secondary"}
+                        />
+                    </Link>
+                ))}
             </div>
             <h3
                 className={

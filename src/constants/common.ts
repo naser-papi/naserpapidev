@@ -44,3 +44,21 @@ export const SectionsNav = [
         href: "#contact",
     },
 ];
+
+export const SocialLinks = [
+    {
+        icon: "fa-brands fa-linkedin-in",
+        title: "LinkedIn",
+        link: "https://www.linkedin.com/in/naser-papi/",
+    },
+    {
+        icon: "fa-brands fa-github",
+        title: "Github",
+        link: "https://github.com/naser-papi/",
+    },
+    {
+        icon: "fa-brands fa-telegram",
+        title: "Telegram",
+        link: "https://t.me/naserpapi",
+    },
+];

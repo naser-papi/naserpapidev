@@ -17,8 +17,9 @@ const useClientApi = () => {
         if (resp.status === 403 || resp.status === 401) {
             appState.globalMessage = undefined;
             router.push("/auth/sign-in");
-        }
-        if (resp.status != 200 && resp.status != 201) {
+        } else if (resp.status >= 500 && resp.status < 599) {
+            alert("Something went wrong...");
+        } else if (resp.status != 200 && resp.status != 201) {
             appState.globalMessage = {
                 type: "error",
                 message: resp.error!,

@@ -43,3 +43,8 @@
 }
 
 /*----------line with bullets*/
+
+html {
+    scrollbar-color: #1A1E23 #4B5563;
+    scrollbar-width: thin;
+}
