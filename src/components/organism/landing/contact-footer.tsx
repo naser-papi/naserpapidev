@@ -34,9 +34,6 @@ const ContactFooter = () => {
             >
                 © 2024 Naser Papi. All rights reserved.
             </h3>
-            <p className={"text-center col-span-2 pt-6"}>
-                Figma Designer: JohannLeon
-            </p>
         </div>
     );
 };

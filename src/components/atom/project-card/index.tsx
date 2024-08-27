@@ -62,7 +62,7 @@ const ProjectCard = ({
                 </div>
             </Link>
             <br />
-            <p className={"sm:text-2xl xl:text-5xl"}>{description}</p>
+            <p className={"sm:text-2xl xl:text-3xl"}>{description}</p>
         </div>
     );
 };
