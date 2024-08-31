@@ -20,7 +20,7 @@ const AboutMe = () => {
             />
             <div
                 className={
-                    "relative w-full grid place-items-center gap-x-6 gap-y-4 z-10 sm:gap-12 xl:grid-cols-[1fr_auto] xl:[&>.section-title]:col-span-2 2xl:place-items-start 2xl:[&>.section-title]:col-span-1  2xl:[&>.img]:row-span-2 2xl:[&>.img]:row-start-1 2xl:[&>.img]:col-start-2 max-w-[1280px] mx-auto"
+                    "relative w-full grid place-items-center gap-x-6 gap-y-4 z-10 sm:gap-12 xl:grid-cols-[1fr_auto] xl:[&>.section-title]:col-span-2 2xl:place-items-start 2xl:[&>.section-title]:col-span-1  2xl:[&>.img]:row-span-2 2xl:[&>.img]:row-start-1 2xl:[&>.img]:col-start-2 2xl:[&>.img]:place-self-end max-w-[1280px] mx-auto"
                 }
             >
                 <SectionTitle title="About Me" />

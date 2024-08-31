@@ -6,27 +6,41 @@ const Summary = () => {
             }
         >
             <span>{"<p>"}</span>
-            <h4>Hello !</h4>
+            <h4>Hello!</h4>
             <p>
-                My name is Naser and I specialize in web developement that
-                utilizes <em>JAVASCRIPT</em>, <em>HTML&CSS</em>,{" "}
-                <em>TYPESCRIPT</em>, <em>NEXT.js</em>, <em>NEST.js</em>, and{" "}
-                <em>MONGODB</em> etc.
+                I&apos;m Naser, a web developer specializing in{" "}
+                <em>JavaScript</em>, <em>TypeScript</em>, <em>Next.js</em>,{" "}
+                <em>Nest.js</em>, <em>MongoDB</em>, <em>DevOps</em>,{" "}
+                <em>Figma UI/UX Design</em> and more.
             </p>
             <p>
-                I am a highly motivated individual and an eternal optimist
-                dedicated to writing clear, <em>SOLID</em>, robust code that
-                works. I strive never to stop <em>learning</em> and improving.
+                <span
+                    className={
+                        "underline text-secondary-500 underline-offset-8"
+                    }
+                >
+                    I turn ideas into fully realized digital products
+                </span>
+                , managing every step from creative brainstorming and Figma
+                UI/UX design to full-stack development with React, Next.js,
+                NestJS, MongoDB, and deployment on MS Azure.
             </p>
             <p>
-                When I&apos;m not coding, I write <em>blog posts</em>, read, or
-                learn new ideas to assist other developers with interesting
-                articles and tricks.
+                I am a passionate, driven professional dedicated to writing
+                clean, <em>SOLID</em>, and robust code that delivers results. I
+                am constantly <em>learning</em> and evolving, always striving to
+                improve my craft.
             </p>
             <p>
-                I am excited to contribute to other developer&apos;s mission of
-                delivering high-quality products through innovation and
-                teamwork.
+                Beyond coding, I&apos;m passionate about{" "}
+                <em>writing articles</em>, exploring <em>new ideas</em>, and{" "}
+                <em>mentoring</em> developers through actionable tips and
+                insights.
+            </p>
+            <p>
+                I am excited to <em>contribute</em> to other developer&apos;s
+                mission of delivering <em>high-quality</em> products through
+                innovation and teamwork.
             </p>
             <span>{"<p>"}</span>
         </div>

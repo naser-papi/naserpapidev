@@ -40,7 +40,7 @@ const HeroBox = () => {
                         <Tag text={"React"} />
                         <Tag text={"NeXt.JS"} />
                         <Tag text={"NeSt.JS"} />
-                        <Tag text={"MongoDB"} />
+                        <Tag text={"Mongo"} />
                     </div>
                 </div>
                 <div className={"w-2/3 justify-self-start px-2"}>

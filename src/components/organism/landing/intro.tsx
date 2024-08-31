@@ -34,7 +34,7 @@ const Intro = () => {
                 className={"justify-self-center xl:justify-self-start"}
             >
                 <TitleIcon
-                    title={"let’s connect!"}
+                    title={"Let’s connect!"}
                     icon={<i className="fa-brands fa-rocketchat" />}
                 />
             </Link>
