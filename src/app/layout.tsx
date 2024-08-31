@@ -3,7 +3,7 @@ import "./globals.css";
 import { ubunto, ibmmono } from "./(utils)/fonts";
 
 export const metadata: Metadata = {
-    title: "welcome to naser papi website ",
+    title: "Welcome To Naser Papi Website!",
     description:
         "here you can find a lot of articles about my best development experiences",
 };

@@ -9,11 +9,11 @@ const Intro = () => {
                 }
             >
                 <h4>{"<h1>"}</h4>
-                <h3>Hey</h3>
+                <h3>Hi,</h3>
                 <h3>
-                    I am <span>Naser</span>
+                    I&apos;m <span>Naser</span>
                 </h3>
-                <h3>Senior Web Developer</h3>
+                <h3>a Senior Javascript Developer</h3>
                 <h4>{"</h1>"}</h4>
             </div>
             <div
@@ -23,9 +23,9 @@ const Intro = () => {
             >
                 <h4>{"<p>"}</h4>
                 <p>
-                    I help business grow by crafting amazing web and mobile
-                    experiences. If you’re looking for a developer that likes to
-                    get stuff done,
+                    I specialize in driving business growth by creating
+                    exceptional web and mobile experiences. If you need a
+                    developer who brings ideas to life and gets things done,
                 </p>
                 <h4>{"</p>"}</h4>
             </div>
@@ -34,7 +34,7 @@ const Intro = () => {
                 className={"justify-self-center xl:justify-self-start"}
             >
                 <TitleIcon
-                    title={"Let's Talk"}
+                    title={"let’s connect!"}
                     icon={<i className="fa-brands fa-rocketchat" />}
                 />
             </Link>

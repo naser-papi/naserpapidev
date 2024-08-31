@@ -1,7 +1,7 @@
 import { BaseHTMLAttributes } from "react";
 
 interface IndicatorProps extends BaseHTMLAttributes<HTMLLabelElement> {
-    count: number;
+    count: number | string;
     text: string;
 }
 
