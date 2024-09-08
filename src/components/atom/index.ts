@@ -12,3 +12,4 @@ export { default as SearchBox } from "./search-box";
 export { default as Spinner } from "./spinner";
 export { default as Tag } from "./tag";
 export { default as TextBox } from "./text-box";
+export { default as SkillIconTitle } from "./skill-icon-title";
