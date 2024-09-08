@@ -38,7 +38,7 @@ const TimeSkillCard = ({ start, end, title, skills }: TimeSkillCardProps) => {
             </header>
             <main className={"z-10 flex flex-wrap items-center gap-4 py-8"}>
                 {skills.map((skill) => (
-                    <SkillIconTitle {...skill} />
+                    <SkillIconTitle {...skill} key={skill.title} />
                 ))}
             </main>
         </div>

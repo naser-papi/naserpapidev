@@ -290,6 +290,7 @@ const SkillCards = () => {
             </div>
             {SkillHistory.map((sh) => (
                 <TimeSkillCard
+                    key={sh.start}
                     start={sh.start}
                     end={sh.end}
                     title={sh.title}
