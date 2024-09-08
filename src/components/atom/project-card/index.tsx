@@ -18,23 +18,23 @@ const ProjectCard = ({
     description,
 }: ProjectCardProps) => {
     return (
-        <div className={"text-center py-4"}>
+        <div className={"py-4 text-center"}>
             <Link href={link} target={"_blank"}>
                 <div
                     className={
-                        "relative w-[300px] h-[200px] sm:w-[600px] sm:h-[400px] xl:w-[800px] xl:h-[600px]"
+                        "relative h-[200px] w-[300px] sm:h-[400px] sm:w-[600px] xl:h-[600px] xl:w-[800px]"
                     }
                 >
                     <div
                         className={
-                            "absolute z-10 text-secondary-600 top-[30px] left-[140px] sm:top-[65px] sm:left-[290px] sm:text-2xl xl:text-4xl xl:top-[100px] xl:left-[360px]"
+                            "absolute left-[140px] top-[30px] z-10 text-secondary-600 sm:left-[290px] sm:top-[65px] sm:text-2xl xl:left-[360px] xl:top-[100px] xl:text-4xl"
                         }
                     >
                         <i className="fa-sharp-duotone fa-solid fa-bullseye-pointer" />
                     </div>
                     <h2
                         className={
-                            "absolute z-10 text-secondary-600 top-[25px] left-[160px] border-b-2 border-primary-100 font-ibm sm:top-[60px] sm:left-[320px] sm:text-2xl xl:text-5xl xl:top-[90px] xl:left-[400px]"
+                            "absolute left-[160px] top-[25px] z-10 border-b-2 border-primary-100 font-ibm text-secondary-600 sm:left-[320px] sm:top-[60px] sm:text-2xl xl:left-[400px] xl:top-[90px] xl:text-4xl"
                         }
                     >
                         {title}
@@ -43,14 +43,14 @@ const ProjectCard = ({
                         src={image1}
                         alt={"image"}
                         className={
-                            "absolute left-[25px] top-[26px] z-10 object-cover w-[100px] h-[130px] sm:left-[50px] sm:top-[52px] sm:w-[200px] sm:h-[260px] xl:left-[25px] xl:top-[80px] xl:w-[295px] xl:h-[385px]"
+                            "absolute left-[25px] top-[26px] z-10 h-[130px] w-[100px] object-cover sm:left-[50px] sm:top-[52px] sm:h-[260px] sm:w-[200px] xl:left-[25px] xl:top-[80px] xl:h-[385px] xl:w-[295px]"
                         }
                     />
                     <Image
                         src={image2}
                         alt={"image"}
                         className={
-                            "absolute top-[60px] left-[140px] z-10 object-cover w-[138px] h-[82px] sm:top-[120px] sm:left-[280px] sm:w-[272px] sm:h-[164px] xl:top-[180px] xl:left-[370px] xl:w-[415px] xl:h-[244px]"
+                            "absolute left-[140px] top-[60px] z-10 h-[82px] w-[138px] object-cover sm:left-[280px] sm:top-[120px] sm:h-[164px] sm:w-[272px] xl:left-[370px] xl:top-[180px] xl:h-[244px] xl:w-[415px]"
                         }
                     />
                     <Image
