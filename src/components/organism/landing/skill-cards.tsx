@@ -112,6 +112,11 @@ const SkillHistory = [
                 bgColor: "#D0EBF2",
             },
             {
+                icon: "azure",
+                title: "MS Azure",
+                bgColor: "#BBE9FB",
+            },
+            {
                 icon: "git",
                 title: "git (SVC)",
                 bgColor: "#FFEFEB",
