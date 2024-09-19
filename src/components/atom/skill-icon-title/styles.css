@@ -4,242 +4,248 @@
     display: inline-block;
 }
 
-.skill-cord {
-    width: 40px;
-    height: 40px;
-    background-position: -116px 0;
-}
-
-.skill-cpanel {
-    width: 40px;
-    height: 40px;
-    background-position: -75px 0;
-}
-
-.skill-css {
-    width: 40px;
-    height: 40px;
-    background-position: -72px -82px;
-}
-
-.skill-cy {
-    width: 40px;
-    height: 40px;
-    background-position: -102px -287px;
-}
-
-.skill-docker {
-    width: 71px;
-    height: 40px;
-    background-position: 0 -82px;
-}
-
-.skill-electron {
-    width: 37px;
-    height: 40px;
-    background-position: -157px -164px;
-}
-
-.skill-eslint {
-    width: 47px;
-    height: 40px;
-    background-position: -55px -205px;
-}
-
-.skill-exp {
-    width: 40px;
-    height: 40px;
-    background-position: 0 -41px;
-}
-
-.skill-fig {
-    width: 40px;
-    height: 40px;
-    background-position: -104px -246px;
-}
-
-.skill-git {
-    width: 40px;
-    height: 40px;
-    background-position: -98px -123px;
-}
-
-.skill-github {
-    width: 41px;
-    height: 40px;
-    background-position: -198px 0;
-}
-
-.skill-graphQl {
-    width: 35px;
-    height: 40px;
-    background-position: -68px -246px;
-}
-
-.skill-html {
-    width: 40px;
-    height: 40px;
-    background-position: -198px -82px;
-}
-
-.skill-jq {
-    width: 40px;
-    height: 40px;
-    background-position: -116px -82px;
-}
-
-.skill-js {
-    width: 36px;
-    height: 40px;
-    background-position: 0 0;
-}
-
-.skill-mat {
-    width: 40px;
-    height: 40px;
-    background-position: -157px 0;
-}
-
-.skill-mongo {
-    width: 57px;
-    height: 40px;
-    background-position: 0 -164px;
-}
-
-.skill-mssql {
-    width: 37px;
-    height: 40px;
-    background-position: -37px 0;
-}
-
-.skill-mvc {
-    width: 40px;
-    height: 40px;
-    background-position: -198px -41px;
-}
-
-.skill-nest {
-    width: 40px;
-    height: 40px;
-    background-position: -157px -82px;
-}
-
-.skill-next {
-    width: 40px;
-    height: 40px;
-    background-position: -198px -205px;
-}
-
-.skill-ng {
-    width: 38px;
-    height: 40px;
-    background-position: -75px -41px;
-}
-
-.skill-nginx {
-    width: 40px;
-    height: 40px;
-    background-position: -157px -123px;
-}
-
-.skill-npm {
-    width: 97px;
-    height: 40px;
-    background-position: 0 -123px;
-}
-
-.skill-owaps {
-    width: 40px;
-    height: 40px;
-    background-position: -184px -287px;
-}
-
-.skill-py {
-    width: 36px;
-    height: 40px;
-    background-position: -198px -164px;
-}
-
-.skill-react {
-    width: 40px;
-    height: 40px;
-    background-position: -145px -246px;
-}
-
-.skill-redux {
-    width: 40px;
-    height: 40px;
-    background-position: -186px -246px;
-}
-
-.skill-sass {
-    width: 54px;
-    height: 40px;
-    background-position: 0 -205px;
-}
-
-.skill-sb {
-    width: 32px;
-    height: 40px;
-    background-position: -41px -41px;
-}
-
-.skill-strapi {
-    width: 40px;
-    height: 40px;
-    background-position: -143px -287px;
-}
-
-.skill-swagger {
-    width: 40px;
-    height: 40px;
-    background-position: -103px -205px;
-}
-
-.skill-tailwind {
-    width: 67px;
-    height: 40px;
-    background-position: 0 -246px;
-}
-
-.skill-ts {
-    width: 40px;
-    height: 40px;
-    background-position: -116px -41px;
-}
-
-.skill-valtio {
-    width: 43px;
-    height: 40px;
-    background-position: -144px -205px;
-}
-
-.skill-wp {
-    width: 40px;
-    height: 40px;
-    background-position: -58px -164px;
-}
-
 .skill-ant {
     width: 40px;
     height: 40px;
-    background-position: -198px -123px;
+    background-position: -157px -164px;
 }
 
 .skill-asp {
     width: 101px;
     height: 40px;
-    background-position: 0 -287px;
+    background-position: 0 -246px;
 }
 
 .skill-azure {
     width: 40px;
     height: 40px;
-    background-position: -99px -164px;
+    background-position: -198px -82px;
 }
 
 .skill-bs {
     width: 40px;
     height: 40px;
+    background-position: -192px -287px;
+}
+
+.skill-cord {
+    width: 40px;
+    height: 40px;
+    background-position: -157px -123px;
+}
+
+.skill-cpanel {
+    width: 40px;
+    height: 40px;
+    background-position: -157px 0;
+}
+
+.skill-css {
+    width: 40px;
+    height: 40px;
+    background-position: -72px -164px;
+}
+
+.skill-cy {
+    width: 40px;
+    height: 40px;
+    background-position: -116px -41px;
+}
+
+.skill-docker {
+    width: 71px;
+    height: 40px;
+    background-position: 0 -164px;
+}
+
+.skill-electron {
+    width: 37px;
+    height: 40px;
+    background-position: -78px 0;
+}
+
+.skill-eslint {
+    width: 47px;
+    height: 40px;
+    background-position: 0 -205px;
+}
+
+.skill-exp {
+    width: 40px;
+    height: 40px;
     background-position: -157px -41px;
+}
+
+.skill-fig {
+    width: 40px;
+    height: 40px;
+    background-position: -198px 0;
+}
+
+.skill-git {
+    width: 40px;
+    height: 40px;
+    background-position: -41px -82px;
+}
+
+.skill-github {
+    width: 41px;
+    height: 40px;
+    background-position: -141px -246px;
+}
+
+.skill-graphQl {
+    width: 35px;
+    height: 40px;
+    background-position: -98px -287px;
+}
+
+.skill-html {
+    width: 40px;
+    height: 40px;
+    background-position: -198px -123px;
+}
+
+.skill-jq {
+    width: 40px;
+    height: 40px;
+    background-position: -157px -82px;
+}
+
+.skill-js {
+    width: 36px;
+    height: 40px;
+    background-position: -41px 0;
+}
+
+.skill-mat {
+    width: 40px;
+    height: 40px;
+    background-position: -116px -82px;
+}
+
+.skill-mongo {
+    width: 57px;
+    height: 40px;
+    background-position: -134px -287px;
+}
+
+.skill-mssql {
+    width: 37px;
+    height: 40px;
+    background-position: -78px -41px;
+}
+
+.skill-mvc {
+    width: 40px;
+    height: 40px;
+    background-position: -198px -205px;
+}
+
+.skill-nest {
+    width: 40px;
+    height: 40px;
+    background-position: -198px -41px;
+}
+
+.skill-next {
+    width: 40px;
+    height: 40px;
+    background-position: 0 0;
+}
+
+.skill-ng {
+    width: 38px;
+    height: 40px;
+    background-position: -102px -246px;
+}
+
+.skill-nginx {
+    width: 40px;
+    height: 40px;
+    background-position: 0 -82px;
+}
+
+.skill-npm {
+    width: 97px;
+    height: 40px;
+    background-position: 0 -287px;
+}
+
+.skill-owaps {
+    width: 40px;
+    height: 40px;
+    background-position: -183px -246px;
+}
+
+.skill-py {
+    width: 36px;
+    height: 40px;
+    background-position: -41px -41px;
+}
+
+.skill-react {
+    width: 40px;
+    height: 40px;
+    background-position: -198px -164px;
+}
+
+.skill-redux {
+    width: 40px;
+    height: 40px;
+    background-position: -112px -123px;
+}
+
+.skill-sass {
+    width: 54px;
+    height: 40px;
+    background-position: -130px -205px;
+}
+
+.skill-sb {
+    width: 32px;
+    height: 40px;
+    background-position: -82px -82px;
+}
+
+.skill-strapi {
+    width: 40px;
+    height: 40px;
+    background-position: -48px -205px;
+}
+
+.skill-swagger {
+    width: 40px;
+    height: 40px;
+    background-position: 0 -41px;
+}
+
+.skill-tailwind {
+    width: 67px;
+    height: 40px;
+    background-position: 0 -123px;
+}
+
+.skill-ts {
+    width: 40px;
+    height: 40px;
+    background-position: -116px 0;
+}
+
+.skill-valtio {
+    width: 43px;
+    height: 40px;
+    background-position: -68px -123px;
+}
+
+.skill-wep {
+    width: 35px;
+    height: 40px;
+    background-position: -113px -164px;
+}
+
+.skill-wp {
+    width: 40px;
+    height: 40px;
+    background-position: -89px -205px;
 }

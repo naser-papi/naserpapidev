@@ -6,10 +6,11 @@ const ContactHeader = () => {
             <SectionTitle title={"Contact"} mode={"underline"} />
             <p
                 className={
-                    "text-center text-lg font-base text-primary-100 sm:text-2xl"
+                    "font-base text-center text-lg text-primary-100 sm:text-2xl"
                 }
             >
-                I’m currently available for freelance work
+                I’m currently available for full time work just high-tech and
+                international companies.
             </p>
         </div>
     );

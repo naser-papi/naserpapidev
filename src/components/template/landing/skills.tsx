@@ -1,6 +1,10 @@
 import Image from "next/image";
 import skillsBk from "assets/images/skills-bk.png";
-import { SkillCards, SkillHeader } from "@/components/organism/landing";
+import {
+    SkillCards,
+    SkillHeader,
+    SkillFooter,
+} from "@/components/organism/landing";
 
 const Skills = () => {
     return (
@@ -21,6 +25,7 @@ const Skills = () => {
             >
                 <SkillHeader />
                 <SkillCards />
+                <SkillFooter />
             </div>
         </div>
     );

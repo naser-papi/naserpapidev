@@ -57,9 +57,9 @@ const SkillHistory = [
                 bgColor: "#CFF1B1",
             },
             {
-                icon: "npm",
+                icon: "wep",
                 title: "WebPack",
-                bgColor: "#FFA2A1",
+                bgColor: "#d8f5fa",
             },
             {
                 icon: "tailwind",
@@ -194,9 +194,9 @@ const SkillHistory = [
                 bgColor: "#EECBC2",
             },
             {
-                icon: "npm",
+                icon: "wep",
                 title: "WebPack",
-                bgColor: "#FFA2A1",
+                bgColor: "#d8f5fa",
             },
             {
                 icon: "bs",
@@ -282,7 +282,7 @@ const SkillCards = () => {
     return (
         <div
             className={
-                "relative flex w-full flex-col justify-center gap-8 py-12 [&>.time-skill-card]:z-10"
+                "relative flex w-full flex-col justify-center gap-16 py-12 [&>.time-skill-card]:z-10"
             }
         >
             <div

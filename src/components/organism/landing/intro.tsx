@@ -2,10 +2,10 @@ import Link from "next/link";
 import { TitleIcon } from "@/components/molecule";
 const Intro = () => {
     return (
-        <div className={"intro grid place-items-start gap-y-2 w-full"}>
+        <div className={"intro grid w-full place-items-start gap-y-2"}>
             <div
                 className={
-                    "flex flex-col gap-2 text-primary-50 text-2xl font-ubuntu [&>h4]:text-lg [&>h3]:pl-4 [&>h4]:text-secondary-600 [&>span]:text-secondary-600 [&>h4]:font-ibm sm:text-3xl"
+                    "flex flex-col gap-2 font-ubuntu text-2xl text-primary-50 sm:text-3xl [&>h3]:pl-4 [&>h4]:font-ibm [&>h4]:text-lg [&>h4]:text-secondary-600 [&>span]:text-secondary-600"
                 }
             >
                 <h4>{"<h1>"}</h4>
@@ -18,7 +18,7 @@ const Intro = () => {
             </div>
             <div
                 className={
-                    "flex flex-col font-ibm text-base text-primary-50 [&>h4]:text-secondary-600 [&>p]:font-ubuntu [&>p]:pl-4 sm:text-xl"
+                    "flex flex-col font-ibm text-base text-primary-50 sm:text-xl [&>h4]:text-secondary-600 [&>p]:pl-4 [&>p]:font-ubuntu"
                 }
             >
                 <h4>{"<p>"}</h4>
@@ -31,6 +31,7 @@ const Intro = () => {
             </div>
             <Link
                 href={"https://calendly.com/naserpapi/technical"}
+                target={"_blank"}
                 className={"justify-self-center xl:justify-self-start"}
             >
                 <TitleIcon

@@ -2,7 +2,7 @@ const Summary = () => {
     return (
         <div
             className={
-                "grid gap-y-2 w-full max-w-5xl bg-primary-800 rounded-[40px] p-6 text-primary-50 [&>span]:text-secondary-600 [&>h4]:text-secondary-600 [&_em]:text-secondary-600 [&_p]:pl-3 [&_h4]:pl-4 sm:text-xl sm:p-8"
+                "grid w-full max-w-5xl gap-y-2 rounded-[40px] bg-primary-800 p-6 text-primary-50 sm:p-8 sm:text-xl [&>h4]:text-secondary-600 [&>span]:text-secondary-600 [&_em]:text-secondary-600 [&_h4]:pl-4 [&_p]:pl-3"
             }
         >
             <span>{"<p>"}</span>
@@ -16,7 +16,7 @@ const Summary = () => {
             <p>
                 <span
                     className={
-                        "underline text-secondary-500 underline-offset-8"
+                        "text-secondary-500 underline underline-offset-8"
                     }
                 >
                     I turn ideas into fully realized digital products

@@ -9,7 +9,7 @@ const Contact = () => {
         <div
             id={"contact"}
             className={
-                "w-full grid place-items-center px-6 bg-primary-700 pt-12 gap-y-12 sm:p-12 xl:px-20 scroll-mt-10"
+                "grid w-full scroll-mt-10 place-items-center gap-y-12 bg-primary-700 px-6 sm:p-12 xl:px-20"
             }
         >
             <ContactHeader />

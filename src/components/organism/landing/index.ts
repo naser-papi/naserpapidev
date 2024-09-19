@@ -16,3 +16,4 @@ export { default as WorksCarousel } from "./works-carousel";
 export { default as WorksHeader } from "./works-header";
 export { default as HeaderSocial } from "./header-social";
 export { default as HeroHead } from "./hero-head";
+export { default as SkillFooter } from "./skill-footer";
