@@ -32,6 +32,11 @@ jobs:
         push: true
         tags: hollandkade.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_512295c402df4b7f981a53a3f1fb21d1 }}/np-website:${{ github.sha }}
         file: ./Dockerfile
+        build-args: |
+          DATABASE_URL=${{ secrets.DATABASE_URL }}
+          API_SERVER=${{ secrets.API_SERVER }}
+          NEXT_PUBLIC_API_SERVER=${{ secrets.NEXT_PUBLIC_API_SERVER }}
+          SHOW_CONSTRUCTION=${{ secrets.SHOW_CONSTRUCTION }}
 
   deploy:
     runs-on: ubuntu-latest
