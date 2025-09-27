@@ -86,10 +86,13 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           source: |
-            docker-compose.yml
-            ops/caddy/Caddyfile
-            .env.deploy
+            ./docker-compose.yml
+            ./ops/caddy/Caddyfile
+            ./.env.deploy
           target: ${{ secrets.DEPLOY_PATH }}/
+          overwrite: true
+          debug: true
+
 
 
       - name: Run remote deploy commands
