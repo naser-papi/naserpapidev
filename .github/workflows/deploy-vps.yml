@@ -1,14 +1,13 @@
-name: Build & Deploy (GHCR → VPS)
+name: Deploy to VPS (Caddy + Docker Compose)
 
 on:
   push:
     branches: [ "main" ]
-    tags: [ "v*", "release-*" ]
   workflow_dispatch:
 
-# Avoid overlapping deploys on main
+# Avoid overlapping deploys
 concurrency:
-  group: deploy-main
+  group: deploy-prod
   cancel-in-progress: true
 
 permissions:
@@ -16,134 +15,160 @@ permissions:
   packages: write
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/naserpapidev
-  DOCKER_BUILDKIT: 1
+  # Change if your image name differs from repo name
+  IMAGE_NAME: naserpapidev
 
 jobs:
-  build-and-push:
-    name: Build & Push to GHCR
+  build_and_push:
+    name: Build & Push Image
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set image tag
-        id: meta
+      - name: Read .env.deploy into env
+        id: read_env
         run: |
-          if [[ "${GITHUB_REF_TYPE}" == "branch" && "${GITHUB_REF_NAME}" == "main" ]]; then
-            echo "tag=edge" >> $GITHUB_OUTPUT
-          elif [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
-            echo "tag=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+          set -euo pipefail
+          if [ -f ".env.deploy" ]; then
+            # shellcheck disable=SC2046,SC1091
+            set -a && . ./.env.deploy && set +a
+            # Export a few we need in later steps
+            {
+              echo "DOMAIN=${DOMAIN:-}"
+              echo "EMAIL=${EMAIL:-}"
+              echo "DATABASE_URL=${DATABASE_URL:-}"
+              echo "API_SERVER=${API_SERVER:-}"
+              echo "NEXT_PUBLIC_API_SERVER=${NEXT_PUBLIC_API_SERVER:-}"
+              echo "SHOW_CONSTRUCTION=${SHOW_CONSTRUCTION:-}"
+              echo "GHCR_OWNER_FILE=${GHCR_OWNER:-}"
+              echo "IMAGE_TAG_FILE=${IMAGE_TAG:-latest}"
+            } >> "$GITHUB_ENV"
           else
-            echo "tag=sha-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+            echo "::warning:: .env.deploy not found; continuing with secrets-only"
           fi
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Set image tags
+        id: tags
+        run: |
+          # Prefer owner from secrets at deploy job, but for build we can use GitHub repository owner
+          OWNER="${{ github.repository_owner }}"
+          SHA_TAG="${{ github.sha }}"
+          echo "OWNER=${OWNER}" >> $GITHUB_ENV
+          echo "SHA_TAG=${SHA_TAG}" >> $GITHUB_ENV
+          echo "IMAGE_SHA=ghcr.io/${OWNER}/${{ env.IMAGE_NAME }}:${SHA_TAG}" >> $GITHUB_ENV
+          echo "IMAGE_LATEST=ghcr.io/${OWNER}/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_ENV
 
       - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
 
-      - name: Build & Push
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: |
-            ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tag }}
-            ${{ env.IMAGE_NAME }}:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          provenance: false
+      - name: Build image (bake in NEXT_PUBLIC_* at build time)
+        run: |
+          # Prefer NEXT_PUBLIC_API_SERVER from secret; else fallback to .env.deploy value read earlier
+          BUILD_NEXT_PUBLIC_API_SERVER="${{ secrets.NEXT_PUBLIC_API_SERVER }}"
+          if [ -z "$BUILD_NEXT_PUBLIC_API_SERVER" ]; then
+            BUILD_NEXT_PUBLIC_API_SERVER="${NEXT_PUBLIC_API_SERVER:-}"
+          fi
+
+          docker build \
+            --build-arg NEXT_PUBLIC_API_SERVER="$BUILD_NEXT_PUBLIC_API_SERVER" \
+            -t "${IMAGE_SHA}" \
+            -t "${IMAGE_LATEST}" \
+            .
+
+      - name: Push image
+        run: |
+          docker push "${IMAGE_SHA}"
+          docker push "${IMAGE_LATEST}"
+
+      - name: Expose image tag to next jobs
+        outputs:
+          image_sha: ${{ env.IMAGE_SHA }}
+        run: echo "image_sha=${IMAGE_SHA}" >> $GITHUB_OUTPUT
 
   deploy:
-    name: Deploy to VPS
+    name: Deploy on VPS
     runs-on: ubuntu-latest
-    needs: build-and-push
-    # deploy only when pushing to main (tags are handled by build, but skip auto-deploy)
-    if: github.ref_type == 'branch' && github.ref_name == 'main'
+    needs: [ build_and_push ]
+
+    env:
+      GHCR_OWNER: ${{ github.repository_owner }}
+      IMAGE_TAG: ${{ github.sha }}
+
     steps:
-      - name: Checkout
+      - name: Checkout (for rsync of compose/ops files)
         uses: actions/checkout@v4
 
-      - name: Determine tag for deploy
-        id: meta
+      - name: Rsync runtime files to VPS
         run: |
-          echo "tag=edge" >> $GITHUB_OUTPUT
+          set -euo pipefail
+          # Ensure remote path exists
+          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_SSH }}" "mkdir -p '${{ secrets.DEPLOY_PATH }}'"
 
-      - name: Show workspace files (debug)
-        run: |
-          pwd
-          ls -la
-          echo "---- find (maxdepth 3) ----"
-          find . -maxdepth 3 -type f -print
+          # Sync only what's needed to run on the server
+          rsync -avz --delete \
+            docker-compose.yml \
+            ops/ \
+            .env.deploy \
+            "${{ secrets.DEPLOY_SSH }}":"${{ secrets.DEPLOY_PATH }}/"
 
-      - name: Ensure deploy dir exists?
-        uses: appleboy/ssh-action@v1.2.1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          script: |
-            mkdir -p "${{ secrets.DEPLOY_PATH }}"
-
-      - name: Show workspace files (debug)
-        run: |
-          pwd
-          ls -la
-          echo "---- find (maxdepth 3) ----"
-          find . -maxdepth 3 -type f -print
-
-      - name: Copy compose files to VPS
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          source: |
-            ./docker-compose.yml
-            ./ops/caddy/Caddyfile
-          target: ${{ secrets.DEPLOY_PATH }}/
-          overwrite: true
-          debug: true
-
-      - name: Deploy via SSH (pull & up -d)
-        uses: appleboy/ssh-action@v1.2.1
+      - name: Deploy (compose pull & up)
         env:
-          GHCR_OWNER: ${{ secrets.GHCR_OWNER }}
-          IMAGE_TAG: edge
           DOMAIN: ${{ secrets.DOMAIN }}
           EMAIL: ${{ secrets.EMAIL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          API_SERVER: ${{ secrets.API_SERVER }}
+          NEXT_PUBLIC_API_SERVER: ${{ secrets.NEXT_PUBLIC_API_SERVER }}
+          SHOW_CONSTRUCTION: ${{ secrets.SHOW_CONSTRUCTION }}
           GHCR_READ_TOKEN: ${{ secrets.GHCR_READ_TOKEN }}
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          script: |
+        run: |
+          set -euo pipefail
+          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_SSH }}" bash <<'EOF'
             set -euo pipefail
-            mkdir -p "${{ secrets.DEPLOY_PATH }}"
             cd "${{ secrets.DEPLOY_PATH }}"
-            cat > .env <<EOF
-            GHCR_OWNER=${GHCR_OWNER}
-            IMAGE_TAG=${IMAGE_TAG}
-            DOMAIN=${DOMAIN}
-            EMAIL=${EMAIL}
-            EOF
 
-            if [ -n "${GHCR_READ_TOKEN:-}" ]; then
-              echo "${GHCR_READ_TOKEN}" | docker login ghcr.io -u "${GHCR_OWNER}" --password-stdin
+            # 1) Start from repo's .env.deploy (base defaults)
+            if [ -f ".env.deploy" ]; then
+              cp .env.deploy .env
+            else
+              echo "::warning:: .env.deploy missing on server; creating new .env"
+              : > .env
             fi
 
+            # 2) Force-run vars for this deploy
+            {
+              echo "GHCR_OWNER=${{ env.GHCR_OWNER }}"
+              echo "IMAGE_TAG=${{ env.IMAGE_TAG }}"
+            } >> .env
+
+            # 3) Safely override from secrets if provided (DOMAIN, EMAIL, DB, API, etc.)
+            append_if_set () {
+              VAR_NAME="$1"
+              VAR_VALUE="$2"
+              if [ -n "$VAR_VALUE" ]; then
+                # Remove any existing line for the var, then append
+                sed -i "/^${VAR_NAME}=.*/d" .env || true
+                printf "%s=%s\n" "$VAR_NAME" "$VAR_VALUE" >> .env
+              fi
+            }
+
+            append_if_set "DOMAIN" "${DOMAIN:-}"
+            append_if_set "EMAIL" "${EMAIL:-}"
+            append_if_set "DATABASE_URL" "${DATABASE_URL:-}"
+            append_if_set "API_SERVER" "${API_SERVER:-}"
+            append_if_set "NEXT_PUBLIC_API_SERVER" "${NEXT_PUBLIC_API_SERVER:-}"
+            append_if_set "SHOW_CONSTRUCTION" "${SHOW_CONSTRUCTION:-}"
+
+            # 4) Login to GHCR for pulling private images (optional)
+            if [ -n "${GHCR_READ_TOKEN:-}" ]; then
+              echo "${GHCR_READ_TOKEN}" | docker login ghcr.io -u "${{ env.GHCR_OWNER }}" --password-stdin
+            fi
+
+            # 5) Pull and recreate services
             docker compose pull
             docker compose up -d --remove-orphans
-      
+
+            # 6) Show status
+            docker compose ps
+          EOF
