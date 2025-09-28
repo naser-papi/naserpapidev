@@ -5,7 +5,6 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
-# Avoid overlapping deploys
 concurrency:
   group: deploy-prod
   cancel-in-progress: true
@@ -15,7 +14,6 @@ permissions:
   packages: write
 
 env:
-  # Change if your image name differs from repo name
   IMAGE_NAME: naserpapidev
 
 jobs:
@@ -32,9 +30,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ -f ".env.deploy" ]; then
-            # shellcheck disable=SC2046,SC1091
             set -a && . ./.env.deploy && set +a
-            # Export a few we need in later steps
             {
               echo "DOMAIN=${DOMAIN:-}"
               echo "EMAIL=${EMAIL:-}"
@@ -52,7 +48,6 @@ jobs:
       - name: Set image tags
         id: tags
         run: |
-          # Prefer owner from secrets at deploy job, but for build we can use GitHub repository owner
           OWNER="${{ github.repository_owner }}"
           SHA_TAG="${{ github.sha }}"
           echo "OWNER=${OWNER}" >> $GITHUB_ENV
@@ -65,7 +60,6 @@ jobs:
 
       - name: Build image (bake in NEXT_PUBLIC_* at build time)
         run: |
-          # Prefer NEXT_PUBLIC_API_SERVER from secret; else fallback to .env.deploy value read earlier
           BUILD_NEXT_PUBLIC_API_SERVER="${{ secrets.NEXT_PUBLIC_API_SERVER }}"
           if [ -z "$BUILD_NEXT_PUBLIC_API_SERVER" ]; then
             BUILD_NEXT_PUBLIC_API_SERVER="${NEXT_PUBLIC_API_SERVER:-}"
@@ -81,11 +75,6 @@ jobs:
         run: |
           docker push "${IMAGE_SHA}"
           docker push "${IMAGE_LATEST}"
-
-      - name: Expose image tag to next jobs
-        outputs:
-          image_sha: ${{ env.IMAGE_SHA }}
-        run: echo "image_sha=${IMAGE_SHA}" >> $GITHUB_OUTPUT
 
   deploy:
     name: Deploy on VPS
@@ -103,10 +92,7 @@ jobs:
       - name: Rsync runtime files to VPS
         run: |
           set -euo pipefail
-          # Ensure remote path exists
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_SSH }}" "mkdir -p '${{ secrets.DEPLOY_PATH }}'"
-
-          # Sync only what's needed to run on the server
           rsync -avz --delete \
             docker-compose.yml \
             ops/ \
@@ -128,7 +114,7 @@ jobs:
             set -euo pipefail
             cd "${{ secrets.DEPLOY_PATH }}"
 
-            # 1) Start from repo's .env.deploy (base defaults)
+            # 1) Start from repo's .env.deploy
             if [ -f ".env.deploy" ]; then
               cp .env.deploy .env
             else
@@ -142,12 +128,11 @@ jobs:
               echo "IMAGE_TAG=${{ env.IMAGE_TAG }}"
             } >> .env
 
-            # 3) Safely override from secrets if provided (DOMAIN, EMAIL, DB, API, etc.)
+            # 3) Override from secrets if provided
             append_if_set () {
               VAR_NAME="$1"
               VAR_VALUE="$2"
               if [ -n "$VAR_VALUE" ]; then
-                # Remove any existing line for the var, then append
                 sed -i "/^${VAR_NAME}=.*/d" .env || true
                 printf "%s=%s\n" "$VAR_NAME" "$VAR_VALUE" >> .env
               fi
@@ -160,15 +145,13 @@ jobs:
             append_if_set "NEXT_PUBLIC_API_SERVER" "${NEXT_PUBLIC_API_SERVER:-}"
             append_if_set "SHOW_CONSTRUCTION" "${SHOW_CONSTRUCTION:-}"
 
-            # 4) Login to GHCR for pulling private images (optional)
+            # 4) Login to GHCR (only if needed for private pulls)
             if [ -n "${GHCR_READ_TOKEN:-}" ]; then
               echo "${GHCR_READ_TOKEN}" | docker login ghcr.io -u "${{ env.GHCR_OWNER }}" --password-stdin
             fi
 
-            # 5) Pull and recreate services
+            # 5) Pull & recreate
             docker compose pull
             docker compose up -d --remove-orphans
-
-            # 6) Show status
             docker compose ps
           EOF
