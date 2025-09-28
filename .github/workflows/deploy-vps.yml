@@ -85,7 +85,7 @@ jobs:
           echo "---- find (maxdepth 3) ----"
           find . -maxdepth 3 -type f -print
 
-      - name: Ensure deploy dir exists
+      - name: Ensure deploy dir exists?
         uses: appleboy/ssh-action@v1.2.1
         with:
           host: ${{ secrets.VPS_HOST }}
