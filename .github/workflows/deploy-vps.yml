@@ -112,7 +112,6 @@ jobs:
           source: |
             ./docker-compose.yml
             ./ops/caddy/Caddyfile
-            ./.env.deploy
           target: ${{ secrets.DEPLOY_PATH }}/
           overwrite: true
           debug: true
@@ -121,7 +120,7 @@ jobs:
         uses: appleboy/ssh-action@v1.2.1
         env:
           GHCR_OWNER: ${{ secrets.GHCR_OWNER }}
-          IMAGE_TAG: ${{ steps.meta.outputs.tag }}
+          IMAGE_TAG: edge
           DOMAIN: ${{ secrets.DOMAIN }}
           EMAIL: ${{ secrets.EMAIL }}
           GHCR_READ_TOKEN: ${{ secrets.GHCR_READ_TOKEN }}
@@ -132,29 +131,19 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             set -euo pipefail
+            mkdir -p "${{ secrets.DEPLOY_PATH }}"
             cd "${{ secrets.DEPLOY_PATH }}"
-
-            # Create/refresh server-side .env for docker compose
             cat > .env <<EOF
             GHCR_OWNER=${GHCR_OWNER}
             IMAGE_TAG=${IMAGE_TAG}
             DOMAIN=${DOMAIN}
             EMAIL=${EMAIL}
             EOF
-            echo "Wrote $(pwd)/.env:"
-            cat .env
 
-            # Optional: login to GHCR if your image is private
             if [ -n "${GHCR_READ_TOKEN:-}" ]; then
               echo "${GHCR_READ_TOKEN}" | docker login ghcr.io -u "${GHCR_OWNER}" --password-stdin
             fi
 
-            # Pull & restart
             docker compose pull
             docker compose up -d --remove-orphans
-
-            # Basic health check
-            docker compose ps
-            sleep 3
-            docker compose logs --no-log-prefix --since=2m app || true
-            docker compose logs --no-log-prefix --since=2m caddy || true
+      

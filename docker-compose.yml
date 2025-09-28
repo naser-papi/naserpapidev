@@ -4,8 +4,6 @@ services:
   app:
     image: ghcr.io/${GHCR_OWNER}/naserpapidev:${IMAGE_TAG:-latest}
     restart: unless-stopped
-    env_file:
-      - .env.deploy
     environment:
       NODE_ENV: production
       PORT: 3000
@@ -33,8 +31,6 @@ services:
     environment:
       EMAIL: ${EMAIL}
       DOMAIN: ${DOMAIN}
-      # Used for ACME account registration
-      ACME_AGREE: "true"
 
 volumes:
   caddy_data:
