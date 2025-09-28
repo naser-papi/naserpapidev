@@ -92,12 +92,12 @@ jobs:
       - name: Rsync runtime files to VPS
         run: |
           set -euo pipefail
-          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_SSH }}" "mkdir -p '${{ secrets.DEPLOY_PATH }}'"
+          ssh -o StrictHostKeyChecking=no "${{ secrets.VPS_HOST }}" "mkdir -p '${{ secrets.DEPLOY_PATH }}'"
           rsync -avz --delete \
             docker-compose.yml \
             ops/ \
             .env.deploy \
-            "${{ secrets.DEPLOY_SSH }}":"${{ secrets.DEPLOY_PATH }}/"
+            "${{ secrets.VPS_HOST }}":"${{ secrets.DEPLOY_PATH }}/"
 
       - name: Deploy (compose pull & up)
         env:
@@ -110,7 +110,7 @@ jobs:
           GHCR_READ_TOKEN: ${{ secrets.GHCR_READ_TOKEN }}
         run: |
           set -euo pipefail
-          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_SSH }}" bash <<'EOF'
+          ssh -o StrictHostKeyChecking=no "${{ secrets.VPS_HOST }}" bash <<'EOF'
             set -euo pipefail
             cd "${{ secrets.DEPLOY_PATH }}"
 
