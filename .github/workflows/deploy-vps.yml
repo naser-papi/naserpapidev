@@ -95,6 +95,13 @@ jobs:
           script: |
             mkdir -p "${{ secrets.DEPLOY_PATH }}"
 
+      - name: Show workspace files (debug)
+        run: |
+          pwd
+          ls -la
+          echo "---- find (maxdepth 3) ----"
+          find . -maxdepth 3 -type f -print
+
       - name: Copy compose files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
