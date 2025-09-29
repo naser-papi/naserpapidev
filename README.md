@@ -19,3 +19,5 @@ how to revert to a specific commit :
 https://stackoverflow.com/questions/4114095/how-do-i-revert-a-git-repository-to-a-previous-commit
 git revert --no-commit 0d1d7fc3..HEAD
 git commit
+
+How to deploy on VPS instead Azure Could.
