@@ -121,6 +121,29 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Prepare remote workspace (fix bad paths & ownership)
+        run: |
+          set -euo pipefail
+          SSH_OPTS="-o StrictHostKeyChecking=no ${{ env.PORT_OPT }}"
+          ssh $SSH_OPTS "${{ env.HOST }}" bash <<'S'
+            set -euo pipefail
+            DEPLOY_PATH="${{ env.REMOTE_PATH }}"
+            BAD_DIR="$DEPLOY_PATH/ops/caddy/Caddyfile"
+
+            mkdir -p "$DEPLOY_PATH"
+
+            # If Caddyfile exists as a directory, remove it (try without sudo, then with sudo)
+            if [ -d "$BAD_DIR" ]; then
+              rm -rf "$BAD_DIR" || sudo rm -rf "$BAD_DIR"
+            fi
+
+            # Ensure expected dirs exist
+            mkdir -p "$DEPLOY_PATH/ops/caddy"
+
+            # Ensure deploy owns the tree (try without sudo, then with sudo)
+            chown -R "$(id -un)":"$(id -gn)" "$DEPLOY_PATH" 2>/dev/null || sudo chown -R "$(id -un)":"$(id -gn)" "$DEPLOY_PATH" || true
+          S
+
       - name: Rsync runtime files to VPS
         run: |
           set -euo pipefail
