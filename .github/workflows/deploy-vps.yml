@@ -89,15 +89,56 @@ jobs:
       - name: Checkout (for rsync of compose/ops files)
         uses: actions/checkout@v4
 
+      # Load SSH key for auth (must match authorized_keys of 'deploy' on VPS)
+      - name: Setup SSH agent
+        if: ${{ secrets.SSH_PRIVATE_KEY != '' }}
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Validate and normalize secrets to avoid blank host or hidden CR/LF
+      - name: Preflight & normalize SSH secrets
+        env:
+          DEPLOY_SSH: ${{ secrets.DEPLOY_SSH }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: |
+          set -euo pipefail
+          # Trim whitespace/newlines/tabs from host
+          HOST="$(printf '%s' "$DEPLOY_SSH" | tr -d '\r\n' | sed 's/[[:space:]]//g')"
+          [ -n "$HOST" ] || { echo "::error::DEPLOY_SSH is empty (expected user@host or user@IP)"; exit 1; }
+          # Must be user@host
+          echo "$HOST" | grep -Eq '^[^@]+@[^@]+$' || { echo "::error::DEPLOY_SSH must look like user@host (got something else)"; exit 1; }
+          echo "::add-mask::$HOST"
+          echo "HOST=$HOST" >> $GITHUB_ENV
+
+          # Normalize path
+          REMOTE_PATH="$(printf '%s' "$DEPLOY_PATH" | tr -d '\r\n')"
+          [ -n "$REMOTE_PATH" ] || { echo "::error::DEPLOY_PATH is empty"; exit 1; }
+          echo "REMOTE_PATH=$REMOTE_PATH" >> $GITHUB_ENV
+
+          # Optional non-standard port
+          PORT_OPT=""
+          if [ -n "${DEPLOY_PORT:-}" ]; then PORT_OPT="-p ${DEPLOY_PORT}"; fi
+          echo "PORT_OPT=$PORT_OPT" >> $GITHUB_ENV
+
+          # Quick probe (non-fatal) to surface network/port issues early
+          if ! ssh -o BatchMode=yes -o StrictHostKeyChecking=no $PORT_OPT "$HOST" "echo ok" >/dev/null 2>&1; then
+            echo "::warning:: SSH probe to $HOST failed. If next step errors, check firewall/port/key."
+          fi
+
       - name: Rsync runtime files to VPS
         run: |
           set -euo pipefail
-          ssh -o StrictHostKeyChecking=no "${{ secrets.VPS_HOST }}" "mkdir -p '${{ secrets.DEPLOY_PATH }}'"
-          rsync -avz --delete \
+          SSH_OPTS="-o StrictHostKeyChecking=no ${{ env.PORT_OPT }}"
+          # Ensure remote path exists
+          ssh $SSH_OPTS "${{ env.HOST }}" "mkdir -p '${{ env.REMOTE_PATH }}'"
+          # Sync compose, ops, and env template
+          rsync -az --delete -e "ssh $SSH_OPTS" \
             docker-compose.yml \
             ops/ \
             .env.deploy \
-            "${{ secrets.VPS_HOST }}":"${{ secrets.DEPLOY_PATH }}/"
+            "${{ env.HOST }}:${{ env.REMOTE_PATH }}/"
 
       - name: Deploy (compose pull & up)
         env:
@@ -110,34 +151,31 @@ jobs:
           GHCR_READ_TOKEN: ${{ secrets.GHCR_READ_TOKEN }}
         run: |
           set -euo pipefail
-          ssh -o StrictHostKeyChecking=no "${{ secrets.VPS_HOST }}" bash <<'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ env.PORT_OPT }} "${{ env.HOST }}" bash <<'EOF'
             set -euo pipefail
-            cd "${{ secrets.DEPLOY_PATH }}"
+            cd "${{ env.REMOTE_PATH }}"
 
-            # 1) Start from repo's .env.deploy
+            # 1) Start from repo .env.deploy, then override
             if [ -f ".env.deploy" ]; then
               cp .env.deploy .env
             else
-              echo "::warning:: .env.deploy missing on server; creating new .env"
               : > .env
             fi
 
-            # 2) Force-run vars for this deploy
+            # 2) Force image info
             {
               echo "GHCR_OWNER=${{ env.GHCR_OWNER }}"
               echo "IMAGE_TAG=${{ env.IMAGE_TAG }}"
             } >> .env
 
-            # 3) Override from secrets if provided
+            # 3) Override from secrets if present
             append_if_set () {
-              VAR_NAME="$1"
-              VAR_VALUE="$2"
+              VAR_NAME="$1"; VAR_VALUE="$2"
               if [ -n "$VAR_VALUE" ]; then
                 sed -i "/^${VAR_NAME}=.*/d" .env || true
                 printf "%s=%s\n" "$VAR_NAME" "$VAR_VALUE" >> .env
               fi
             }
-
             append_if_set "DOMAIN" "${DOMAIN:-}"
             append_if_set "EMAIL" "${EMAIL:-}"
             append_if_set "DATABASE_URL" "${DATABASE_URL:-}"
@@ -145,12 +183,12 @@ jobs:
             append_if_set "NEXT_PUBLIC_API_SERVER" "${NEXT_PUBLIC_API_SERVER:-}"
             append_if_set "SHOW_CONSTRUCTION" "${SHOW_CONSTRUCTION:-}"
 
-            # 4) Login to GHCR (only if needed for private pulls)
+            # 4) GHCR auth for private packages (optional)
             if [ -n "${GHCR_READ_TOKEN:-}" ]; then
               echo "${GHCR_READ_TOKEN}" | docker login ghcr.io -u "${{ env.GHCR_OWNER }}" --password-stdin
             fi
 
-            # 5) Pull & recreate
+            # 5) Pull & restart
             docker compose pull
             docker compose up -d --remove-orphans
             docker compose ps
