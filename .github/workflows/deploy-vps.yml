@@ -89,43 +89,37 @@ jobs:
       - name: Checkout (for rsync of compose/ops files)
         uses: actions/checkout@v4
 
-      # Load SSH key for auth (must match authorized_keys of 'deploy' on VPS)
-      - name: Setup SSH agent
-        if: ${{ secrets.SSH_PRIVATE_KEY != '' }}
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       # Validate and normalize secrets to avoid blank host or hidden CR/LF
-      - name: Preflight & normalize SSH secrets
+      - name: Preflight & normalize
         env:
           DEPLOY_SSH: ${{ secrets.DEPLOY_SSH }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
         run: |
           set -euo pipefail
+          # Required secrets
+          [ -n "$SSH_PRIVATE_KEY" ] || { echo "::error:: Missing SSH_PRIVATE_KEY secret"; exit 1; }
+          [ -n "$DEPLOY_SSH" ] || { echo "::error:: Missing DEPLOY_SSH (expected user@host or user@IP)"; exit 1; }
+          [ -n "$DEPLOY_PATH" ] || { echo "::error:: Missing DEPLOY_PATH (e.g., /srv/naserpapidev)"; exit 1; }
+
           # Trim whitespace/newlines/tabs from host
           HOST="$(printf '%s' "$DEPLOY_SSH" | tr -d '\r\n' | sed 's/[[:space:]]//g')"
-          [ -n "$HOST" ] || { echo "::error::DEPLOY_SSH is empty (expected user@host or user@IP)"; exit 1; }
-          # Must be user@host
-          echo "$HOST" | grep -Eq '^[^@]+@[^@]+$' || { echo "::error::DEPLOY_SSH must look like user@host (got something else)"; exit 1; }
+          echo "$HOST" | grep -Eq '^[^@]+@[^@]+$' || { echo "::error:: DEPLOY_SSH must look like user@host (got: $HOST)"; exit 1; }
           echo "::add-mask::$HOST"
           echo "HOST=$HOST" >> $GITHUB_ENV
 
-          # Normalize path
           REMOTE_PATH="$(printf '%s' "$DEPLOY_PATH" | tr -d '\r\n')"
-          [ -n "$REMOTE_PATH" ] || { echo "::error::DEPLOY_PATH is empty"; exit 1; }
           echo "REMOTE_PATH=$REMOTE_PATH" >> $GITHUB_ENV
 
-          # Optional non-standard port
           PORT_OPT=""
           if [ -n "${DEPLOY_PORT:-}" ]; then PORT_OPT="-p ${DEPLOY_PORT}"; fi
           echo "PORT_OPT=$PORT_OPT" >> $GITHUB_ENV
 
-          # Quick probe (non-fatal) to surface network/port issues early
-          if ! ssh -o BatchMode=yes -o StrictHostKeyChecking=no $PORT_OPT "$HOST" "echo ok" >/dev/null 2>&1; then
-            echo "::warning:: SSH probe to $HOST failed. If next step errors, check firewall/port/key."
-          fi
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Rsync runtime files to VPS
         run: |
