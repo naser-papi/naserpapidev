@@ -13,6 +13,18 @@ RUN npm ci
 FROM base AS build
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+ARG NEXT_PUBLIC_API_SERVER
+ENV NEXT_PUBLIC_API_SERVER=$NEXT_PUBLIC_API_SERVER
+
+# If you need these at runtime only, remove from build stage and ensure compose provides them
+ARG API_SERVER
+ARG SHOW_CONSTRUCTION
+ARG DATABASE_URL
+ENV API_SERVER=$API_SERVER
+ENV SHOW_CONSTRUCTION=$SHOW_CONSTRUCTION
+ENV DATABASE_URL=$DATABASE_URL
+
 RUN npm run build
 
 # --- Runtime (standalone) ---
