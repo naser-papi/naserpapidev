@@ -35,6 +35,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+
+      - name: Node build smoke test (captures clear errors)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+        env:
+        # if your build needs public envs, add them here (or as secrets)
+        # NEXT_PUBLIC_API_SERVER: ${{ secrets.NEXT_PUBLIC_API_SERVER }}
+        run: |
+          npm ci
+          npm run build
+
       - name: Build & Push image
         uses: docker/build-push-action@v6
         with:
