@@ -1,30 +1,36 @@
-# Dockerfile
-FROM node:20.11.1-alpine
-
-# Tools for healthcheck (or pick the node-based check and remove this)
-RUN apk add --no-cache curl
-
-# Use npm ci for deterministic installs in CI contexts
+# --- Base with pnpm ---
+FROM node:20-alpine AS base
+ENV NODE_ENV=production
+RUN corepack enable && corepack prepare pnpm@9.4.0 --activate
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
 
-# Copy rest and build
+# --- Dependencies ---
+FROM base AS deps
+# For some native deps
+RUN apk add --no-cache libc6-compat
+COPY package.json pnpm-lock.yaml* package-lock.json* ./
+RUN if [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile; else npm ci; fi
+
+# --- Build ---
+FROM base AS build
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# (Build-time vars are better passed in the workflow with --build-arg)
-ARG NEXT_PUBLIC_API_SERVER
-ENV NEXT_PUBLIC_API_SERVER=$NEXT_PUBLIC_API_SERVER
+# If you need build-time public envs, add:
+# ARG NEXT_PUBLIC_API_BASE
+# ENV NEXT_PUBLIC_API_BASE=$NEXT_PUBLIC_API_BASE
+RUN pnpm run build
 
-# If you need these at runtime only, remove from build stage and ensure compose provides them
-ARG API_SERVER
-ARG SHOW_CONSTRUCTION
-ARG DATABASE_URL
-ENV API_SERVER=$API_SERVER
-ENV SHOW_CONSTRUCTION=$SHOW_CONSTRUCTION
-ENV DATABASE_URL=$DATABASE_URL
+# --- Runtime (standalone) ---
+FROM node:20-alpine AS runner
+ENV NODE_ENV=production \
+    PORT=3000 \
+    HOSTNAME=0.0.0.0
+WORKDIR /app
 
-RUN npm run build
+# Copy Next standalone output
+COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
+COPY --from=build /app/public ./public
 
-ENV PORT=3000
 EXPOSE 3000
-CMD ["npm", "run", "start"]
+CMD ["node", "server.js"]
