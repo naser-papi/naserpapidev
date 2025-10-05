@@ -13,7 +13,7 @@ const Intro = () => {
                 <h3>
                     I&apos;m <span>Naser</span>
                 </h3>
-                <h3>a Senior Javascript Developer</h3>
+                <h3>a Senior [Type|Java] Script Developer</h3>
                 <h4>{"</h1>"}</h4>
             </div>
             <div
