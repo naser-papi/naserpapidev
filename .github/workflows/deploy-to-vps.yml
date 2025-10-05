@@ -51,22 +51,6 @@ jobs:
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache
           cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:cache,mode=max
 
-      - name: Prepare artifacts for server
-        run: |
-          mkdir -p out
-          cp docker-compose.yml out/
-          printf "%s" "${{ secrets.ENV_PROD }}" > out/.env
-
-      - name: Copy files to VPS
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          source: "out/*"
-          target: "${{ env.APP_DIR }}"
-          strip_components: 1
-
       - name: Deploy on VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
