@@ -1,4 +1,4 @@
-name: Deploy NextJS to VPS
+name: Deploy NextJS to VPS - (Digital Ocean)
 
 on:
   push:
